@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhập môn Tâm lý học — Tài liệu ôn tập</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1C2541;
+  --paper:#EEF0EA;
+  --card:#FFFEFA;
+  --ochre:#B7791F;
+  --ochre-soft:#FBF1DD;
+  --teal:#0F6B72;
+  --teal-soft:#DEEEEE;
+  --coral:#C1502E;
+  --coral-soft:#FBE7DF;
+  --plum:#6B4C6E;
+  --plum-soft:#F0E6EF;
+  --line:#D8D3C4;
+  --muted:#6B6558;
+  --shadow: 0 1px 2px rgba(28,37,65,.06), 0 8px 24px -12px rgba(28,37,65,.18);
+  --good:#2F7A4F;
+  --good-soft:#DFF0E4;
+  --review:#B7791F;
+  --review-soft:#FBF1DD;
+  --panel:#1C2541;
+  --panel-text:#EFE9DA;
+  --panel-muted:#a7a08d;
+  --row-alt:#F7F5EE;
+}
+html[data-theme="dark"]{
+  --ink:#EDE9DC;
+  --paper:#161A22;
+  --card:#1F2430;
+  --ochre:#E0A94A;
+  --ochre-soft:#3A311D;
+  --teal:#4FBDC2;
+  --teal-soft:#1B3436;
+  --coral:#E0805E;
+  --coral-soft:#3A2620;
+  --plum:#C495C6;
+  --plum-soft:#332339;
+  --line:#333949;
+  --muted:#9C97A8;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  --good:#5FCB86;
+  --good-soft:#1E3527;
+  --review:#E0A94A;
+  --review-soft:#3A311D;
+  --row-alt:#262B38;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Be Vietnam Pro', sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s ease, color .25s ease;
+}
+::selection{background:var(--ochre); color:#fff;}
+h1,h2,h3,h4{font-family:'Literata', serif; font-weight:600; color:var(--ink); margin:0;}
+a{color:inherit;}
+img{max-width:100%;}
+
+/* ---------- layout shell ---------- */
+.shell{
+  display:grid;
+  grid-template-columns: 272px 1fr;
+  min-height:100vh;
+}
+.shell > *{min-width:0;}
+@media (max-width: 880px){
+  .shell{grid-template-columns: 1fr;}
+}
+
+/* ---------- sidebar ---------- */
+.sidebar{
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  background:var(--panel);
+  color:var(--panel-text);
+  padding:28px 0 40px;
+  border-right:1px solid rgba(0,0,0,.15);
+}
+@media (max-width:880px){
+  .sidebar{position:relative; height:auto; overflow:visible;}
+}
+.sidebar .brand{
+  padding:0 22px 20px;
+  border-bottom:1px solid rgba(239,233,218,.14);
+  margin-bottom:8px;
+  display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+}
+.brand-actions{display:flex; gap:6px; flex:0 0 auto; margin-top:2px;}
+.icon-btn{
+  width:30px; height:30px; border-radius:8px; border:1px solid rgba(239,233,218,.2);
+  background:rgba(255,255,255,.05); color:var(--panel-text); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; transition:background .15s;
+  padding:0;
+}
+.icon-btn:hover{background:rgba(255,255,255,.14);}
+.icon-btn svg{width:15px; height:15px;}
+.icon-btn .icon-moon{display:none;}
+html[data-theme="dark"] .icon-btn .icon-sun{display:none;}
+html[data-theme="dark"] .icon-btn .icon-moon{display:block;}
+.sidebar .brand .eyebrow{
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ochre); font-weight:700;
+}
+.sidebar .brand h1{
+  font-size:21px; color:#fff; margin-top:6px; line-height:1.25;
+}
+.sidebar nav{padding:8px 12px;}
+.sidebar .navgroup-label{
+  font-size:10.5px; text-transform:uppercase; letter-spacing:.12em;
+  color:var(--panel-muted); padding:16px 10px 6px; font-weight:700;
+}
+.taburl{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  padding:9px 10px; border-radius:8px; text-decoration:none;
+  font-size:13.5px; color:#D9D3C1; font-weight:500;
+  border-left:3px solid transparent;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.taburl:hover{background:rgba(255,255,255,.06); color:#fff;}
+.taburl.active{background:rgba(255,255,255,.09); color:#fff; border-left-color:var(--ochre);}
+.taburl .dot{
+  width:8px; height:8px; border-radius:50%; flex:0 0 auto;
+  background:var(--tab-color, var(--ochre));
+}
+.sidebar .progress-wrap{padding:18px 22px 0;}
+.sidebar .progress-track{height:5px; border-radius:3px; background:rgba(255,255,255,.12); overflow:hidden;}
+.sidebar .progress-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--ochre), var(--coral)); transition:width .2s;}
+.sidebar .progress-label{font-size:11px; color:#a7a08d; margin-top:6px;}
+
+/* ---------- main ---------- */
+main{padding: 48px 28px 120px; max-width: 880px; margin:0 auto; width:100%; min-width:0;}
+@media (max-width:600px){ main{padding:32px 16px 100px;} }
+
+.hero{
+  padding: 8px 0 36px; border-bottom:1px solid var(--line); margin-bottom:40px;
+}
+.hero .eyebrow{
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--ochre);
+}
+.hero h1{font-size:clamp(32px,5vw,46px); margin-top:10px; letter-spacing:-.01em;}
+.hero p.lead{color:var(--muted); font-size:17px; max-width:60ch; margin-top:14px;}
+.hero .scope-note{
+  margin-top:22px; background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:14px 16px; font-size:13.5px; color:var(--muted); box-shadow:var(--shadow);
+}
+.hero .scope-note b{color:var(--ink);}
+
+.chapter{margin-bottom:76px; scroll-margin-top:24px;}
+.chapter-head{
+  position:relative;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 26px 24px;
+  box-shadow:var(--shadow);
+  margin-bottom:30px;
+}
+.chapter-head::before, .chapter-head::after{
+  content:""; position:absolute; top:22px; width:14px; height:14px; border-radius:50%;
+  background:var(--paper); border:1px solid var(--line);
+}
+.chapter-head::before{left:-7px;}
+.chapter-head::after{right:-7px;}
+.chapter-num{
+  font-family:'Literata',serif; font-size:13px; font-weight:600; letter-spacing:.08em;
+  color:var(--chapter-color, var(--ochre)); text-transform:uppercase;
+}
+.chapter-head h2{font-size:clamp(24px,3.6vw,32px); margin-top:6px;}
+.chapter-head .sub{color:var(--muted); font-size:14.5px; margin-top:8px; font-style:italic;}
+
+h3.section-title{
+  font-size:20px; color:var(--chapter-color, var(--ochre)); margin:38px 0 14px;
+  padding-bottom:8px; border-bottom:2px solid var(--chapter-color-soft, var(--ochre-soft));
+}
+h4.sub-title{font-size:16px; margin:22px 0 10px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* callouts */
+.callout{
+  border-radius:10px; padding:16px 18px; margin:18px 0; border:1px solid;
+  box-shadow:var(--shadow);
+}
+.callout .label{
+  font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; font-weight:700; margin-bottom:6px; display:block;
+}
+.callout.def{background:var(--ochre-soft); border-color:#EBD9AE;}
+.callout.def .label{color:var(--ochre);}
+.callout.tip{background:var(--teal-soft); border-color:#BFDBDA;}
+.callout.tip .label{color:var(--teal);}
+.callout.app{background:var(--plum-soft); border-color:#DECBDF;}
+.callout.app .label{color:var(--plum);}
+.callout p{margin:0; font-style:italic; color:var(--ink);}
+.callout.app p, .callout.tip p, .callout.def p{font-style:italic;}
+
+/* lists */
+ul.tidy{padding-left:0; margin:0 0 16px; list-style:none;}
+ul.tidy li{
+  position:relative; padding-left:22px; margin-bottom:9px; line-height:1.6;
+}
+ul.tidy li::before{
+  content:"›"; position:absolute; left:2px; top:-1px; color:var(--chapter-color, var(--ochre)); font-weight:700; font-size:17px;
+}
+
+/* tables */
+.tbl-wrap{overflow-x:auto; margin:18px 0 22px; border-radius:10px; box-shadow:var(--shadow); border:1px solid var(--line);}
+table{border-collapse:collapse; width:100%; background:var(--card); font-size:14.5px;}
+table th{
+  background:var(--panel); color:#fff; text-align:left; padding:11px 14px; font-weight:600; font-size:13px;
+  letter-spacing:.01em;
+}
+table td{padding:11px 14px; border-top:1px solid var(--line); vertical-align:top;}
+table tr:nth-child(even) td{background:var(--row-alt);}
+
+/* quiz flip cards */
+.quiz-block{margin-top:34px;}
+.quiz-block .quiz-title{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  margin-bottom:16px;
+}
+.quiz-hint{font-size:13px; color:var(--muted);}
+.qgrid{display:grid; grid-template-columns:1fr; gap:14px;}
+.qcard{
+  border-radius:12px; border:1px solid var(--line); background:var(--card);
+  box-shadow:var(--shadow); overflow:hidden; cursor:pointer;
+  transition:box-shadow .15s, transform .1s;
+}
+.qcard:hover{box-shadow:0 2px 4px rgba(28,37,65,.08), 0 14px 28px -14px rgba(28,37,65,.28);}
+.qcard:active{transform:scale(.997);}
+.qcard .qc-head{
+  display:flex; gap:12px; align-items:flex-start; padding:16px 18px;
+}
+.qcard .qtag{
+  flex:0 0 auto; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:#fff; background:var(--chapter-color, var(--ochre)); border-radius:6px; padding:3px 8px; margin-top:2px;
+}
+.qcard .qtext{font-size:15px; color:var(--ink); font-weight:500;}
+.qcard .qc-flip-note{
+  font-size:12px; color:var(--muted); padding:0 18px 14px 18px; display:flex; align-items:center; gap:6px;
+}
+.qcard .qc-flip-note svg{width:13px; height:13px; opacity:.7;}
+.qcard .qc-answer{
+  max-height:0; opacity:0; overflow:hidden; transition:max-height .28s ease, opacity .22s ease, padding .28s ease;
+  background:var(--chapter-color-soft, var(--ochre-soft)); padding:0 18px;
+  border-top:1px dashed transparent;
+}
+.qcard.open .qc-answer{max-height:600px; opacity:1; padding:14px 18px 18px; border-top-color:#0000001a;}
+.qcard.open .qc-flip-note{display:none;}
+.qc-answer b{color:var(--ink);}
+.qc-answer .correct{color:var(--teal); font-weight:700;}
+
+/* mastery status */
+.qcard{position:relative;}
+.qcard .status-dot{
+  position:absolute; top:14px; right:14px; width:10px; height:10px; border-radius:50%;
+  background:#D8D3C4; transition:background .15s;
+}
+.qcard.mastered .status-dot{background:var(--good);}
+.qcard.review .status-dot{background:var(--coral);}
+.qcard .qc-mastery{
+  display:flex; gap:8px; padding:0 18px 16px; margin-top:-4px;
+}
+.qcard .mbtn{
+  flex:1; border:1px solid var(--line); background:var(--card); border-radius:8px; padding:7px 10px;
+  font-size:12.5px; font-weight:600; font-family:inherit; cursor:pointer; transition:all .15s;
+  display:flex; align-items:center; justify-content:center; gap:5px;
+  color:var(--ink);
+}
+.qcard .mbtn.mastered-btn:hover, .qcard .mbtn.mastered-btn.active{background:var(--good-soft); border-color:var(--good); color:var(--good);}
+.qcard .mbtn.review-btn:hover, .qcard .mbtn.review-btn.active{background:var(--coral-soft); border-color:var(--coral); color:var(--coral);}
+.qcard .chtag{
+  font-size:10px; font-weight:700; letter-spacing:.05em; padding:2px 7px; border-radius:5px;
+  background:var(--chapter-color-soft, var(--ochre-soft)); color:var(--chapter-color, var(--ochre));
+  margin-right:6px;
+}
+
+/* per-chapter progress in sidebar */
+.taburl{position:relative; flex-wrap:wrap;}
+.tab-progress{
+  width:100%; height:3px; background:rgba(255,255,255,.1); border-radius:2px; margin-top:4px; overflow:hidden;
+}
+.tab-progress-fill{height:100%; background:var(--tab-color, var(--ochre)); width:0%; transition:width .3s;}
+.tab-pct{font-size:10px; color:#8d876f; margin-left:auto; font-weight:600;}
+
+/* mixed review controls */
+.review-controls{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px;
+  background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow);
+}
+.review-controls button{
+  font-family:inherit; font-size:13.5px; font-weight:600; border-radius:8px; padding:9px 14px; cursor:pointer; border:none;
+}
+.btn-shuffle{background:var(--panel); color:#fff;}
+.btn-shuffle:hover{background:#2c3a63;}
+.chk-filter{
+  display:flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted); cursor:pointer; user-select:none;
+}
+.review-stats{
+  margin-left:auto; font-size:12.5px; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap;
+}
+.review-stats b{color:var(--ink);}
+.empty-note{color:var(--muted); font-size:14px; font-style:italic; padding:20px 4px;}
+
+/* stat summary card in hero */
+.stat-strip{display:flex; gap:14px; flex-wrap:wrap; margin-top:20px;}
+.stat-chip{
+  background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 16px;
+  box-shadow:var(--shadow); font-size:13px; color:var(--muted); min-width:130px;
+}
+.stat-chip b{display:block; font-family:'Literata',serif; font-size:22px; color:var(--ink); font-weight:600;}
+
+/* ---- visual diagram components ---- */
+.diagram-card{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; margin:22px 0;
+  box-shadow:var(--shadow);
+}
+.diagram-caption{font-size:12.5px; color:var(--muted); text-align:center; margin-top:10px; font-style:italic;}
+
+/* brain map */
+.brainmap-wrap{display:grid; grid-template-columns: 1.1fr 1fr; gap:22px; align-items:center;}
+@media (max-width:640px){ .brainmap-wrap{grid-template-columns:1fr;} }
+.brain-region{cursor:pointer; transition:opacity .15s;}
+.brain-region:hover{opacity:.85;}
+.brain-info{
+  background:var(--chapter-color-soft); border-radius:12px; padding:16px 18px; min-height:150px;
+  border:1px solid #00000012;
+}
+.brain-info h4{font-size:15px; color:var(--chapter-color); margin-bottom:8px;}
+.brain-info p{font-size:13.5px; margin:0; color:var(--ink);}
+.brain-legend{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+.brain-legend span{
+  font-size:11.5px; padding:4px 9px; border-radius:6px; cursor:pointer; font-weight:600; border:1.5px solid transparent;
+}
+
+/* VS comparison cards */
+.vs-wrap{display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:stretch; margin:20px 0;}
+@media (max-width:600px){ .vs-wrap{grid-template-columns:1fr;} .vs-divider{display:none;} }
+.vs-card{background:var(--card); border:2px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow);}
+.vs-card h4{font-size:16px; margin-bottom:10px;}
+.vs-card ul{margin:0; padding-left:18px; font-size:13.5px; line-height:1.7;}
+.vs-card.left{border-color:#B7CFE0;} .vs-card.left h4{color:#2E5A8C;}
+.vs-card.right{border-color:#E0C2CF;} .vs-card.right h4{color:#A34A7A;}
+.vs-divider{
+  display:flex; align-items:center; justify-content:center; font-family:'Literata',serif; font-weight:700;
+  font-size:14px; color:#fff; background:var(--panel); border-radius:50%; width:40px; height:40px; align-self:center;
+}
+
+/* temperament visual cards */
+.temp-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:14px; margin:18px 0;}
+.temp-card{border-radius:14px; padding:18px 16px; color:#fff; box-shadow:var(--shadow);}
+.temp-card h4{color:#fff; font-size:16px; margin-bottom:4px;}
+.temp-card .temp-en{font-size:11.5px; opacity:.85; margin-bottom:10px;}
+.temp-card p{font-size:12.5px; margin:0 0 8px; opacity:.95; line-height:1.55;}
+.temp-card .temp-tag{font-size:10.5px; font-weight:700; text-transform:uppercase; opacity:.85;}
+
+/* timeline (piaget/erikson) */
+.timeline{display:flex; overflow-x:auto; gap:0; padding:8px 0 16px; margin:18px 0;}
+.tl-item{
+  flex:1 0 150px; position:relative; padding:0 12px 0 0; border-left:3px solid var(--chapter-color, var(--ochre));
+  padding-left:16px; padding-bottom:24px;
+}
+.tl-item .tl-age{font-size:11.5px; font-weight:700; color:var(--chapter-color, var(--ochre)); text-transform:uppercase;}
+.tl-item .tl-title{font-size:14.5px; font-weight:600; margin:4px 0 6px;}
+.tl-item .tl-desc{font-size:12.5px; color:var(--muted); line-height:1.5;}
+.tl-item::before{
+  content:""; position:absolute; left:-8px; top:2px; width:13px; height:13px; border-radius:50%;
+  background:var(--chapter-color, var(--ochre)); border:2px solid var(--card);
+}
+
+/* conditioning flow */
+.flow-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:14px 0; justify-content:center;}
+.flow-box{
+  background:var(--card); border:2px solid var(--line); border-radius:10px; padding:12px 16px; font-size:13px;
+  text-align:center; min-width:120px; box-shadow:var(--shadow);
+}
+.flow-box.ucs{border-color:#2E5A8C; color:#2E5A8C; font-weight:600;}
+.flow-box.cs{border-color:#A34A7A; color:#A34A7A; font-weight:600;}
+.flow-box.resp{border-color:var(--teal); color:var(--teal); font-weight:600;}
+.flow-arrow{font-size:20px; color:var(--muted);}
+.flow-plus{font-size:18px; font-weight:700; color:var(--ink);}
+.flow-label{
+  font-size:11px; text-transform:uppercase; letter-spacing:.06em; font-weight:700; color:var(--muted);
+  width:100%; text-align:center; margin-bottom:2px;
+}
+
+/* mermaid-ish curve chart handled via inline SVG, no extra css needed beyond diagram-card */
+
+/* cheat sheet */
+.cheat{
+  background:var(--panel); color:#F3EFE2; border-radius:16px; padding:34px 30px 30px; margin-top:10px;
+}
+.cheat h2{color:#fff; font-size:26px;}
+.cheat .cheat-sub{color:#B9B198; font-size:14px; margin-top:6px; margin-bottom:26px;}
+.cheat-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:22px;}
+.cheat-card{background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:18px 18px 6px;}
+.cheat-card h4{color:var(--ochre); font-size:14px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;}
+.cheat-card h4 span{color:#9a927c; font-weight:400; text-transform:none; letter-spacing:0;}
+.cheat-card ul{padding-left:18px; margin:0 0 14px; font-size:13.5px; color:#DAD4C3; line-height:1.6;}
+.cheat-card li{margin-bottom:8px;}
+.cheat-note{
+  margin-top:22px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:10px; padding:14px 16px; font-size:13px; color:#CFC8B4; font-style:italic;
+}
+
+/* mobile top bar */
+.mobile-bar{
+  display:none; position:sticky; top:0; z-index:20; background:var(--panel); color:#fff;
+  padding:14px 16px; align-items:center; justify-content:space-between;
+}
+@media (max-width:880px){ .mobile-bar{display:flex;} .sidebar{display:none;} .sidebar.open{display:block;} }
+.mobile-bar button{
+  background:var(--ochre); color:#fff; border:none; border-radius:8px; padding:8px 12px; font-size:13px; font-weight:600;
+  font-family:inherit;
+}
+.mobile-bar .mobile-actions{display:flex; align-items:center; gap:8px;}
+.mobile-bar .icon-btn{border-color:rgba(255,255,255,.25);}
+
+.back-top{
+  display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); text-decoration:none;
+  margin-top:8px;
+}
+
+footer.pagefoot{
+  text-align:center; color:var(--muted); font-size:12.5px; padding:40px 20px 10px; max-width:880px; margin:0 auto;
+}
+
+/* ---------- print styles ---------- */
+@media print{
+  .sidebar, .mobile-bar, .review-controls, .qc-mastery, .qc-flip-note, .status-dot, .back-top, .quiz-hint{display:none !important;}
+  .shell{display:block;}
+  main{max-width:100%; padding:0 8mm;}
+  body{background:#fff; color:#000;}
+  .qcard{break-inside:avoid; box-shadow:none; border:1px solid #ccc;}
+  .qcard .qc-answer{max-height:none !important; opacity:1 !important; padding:0 18px 16px !important; background:#f6f6f6 !important;}
+  .chapter{break-before:page; margin-bottom:20px;}
+  .chapter:first-of-type{break-before:auto;}
+  .cheat{background:#fff !important; color:#000 !important; border:1px solid #ccc;}
+  .cheat h2, .cheat-sub, .cheat-card h4{color:#000 !important;}
+  .cheat-card{background:#fafafa !important; border-color:#ddd !important;}
+  .cheat-card ul, .cheat-note{color:#333 !important;}
+  .diagram-card, .chapter-head, table{box-shadow:none !important;}
+  a[href]::after{content:"";}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <strong>Nhập môn Tâm lý học</strong>
+  <div class="mobile-actions">
+    <button class="icon-btn" id="themeToggleMobile" title="Chuyển chế độ sáng/tối" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+    </button>
+    <button id="navToggle">Mục lục</button>
+  </div>
+</div>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Tài liệu ôn tập</div>
+        <h1>Nhập môn<br>Tâm lý học</h1>
+      </div>
+      <div class="brand-actions">
+        <button class="icon-btn" id="themeToggle" title="Chuyển chế độ sáng/tối" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+        </button>
+        <button class="icon-btn" id="printBtn" title="In tài liệu" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav>
+      <div class="navgroup-label">Chương</div>
+      <a class="taburl" data-target="ch1" data-chapkey="ch1" style="--tab-color:#B7791F"><span class="dot"></span>1 · Tâm lý học là gì<span class="tab-pct" data-pct="ch1">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch1"></span></span></a>
+      <a class="taburl" data-target="ch2" data-chapkey="ch2" style="--tab-color:#0F6B72"><span class="dot"></span>2 · Quá trình nhận thức<span class="tab-pct" data-pct="ch2">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch2"></span></span></a>
+      <a class="taburl" data-target="ch3" data-chapkey="ch3" style="--tab-color:#C1502E"><span class="dot"></span>3 · Xúc cảm – Ý chí<span class="tab-pct" data-pct="ch3">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch3"></span></span></a>
+      <a class="taburl" data-target="ch4" data-chapkey="ch4" style="--tab-color:#6B4C6E"><span class="dot"></span>4 · Thuộc tính cá nhân<span class="tab-pct" data-pct="ch4">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch4"></span></span></a>
+      <a class="taburl" data-target="ch5" data-chapkey="ch5" style="--tab-color:#3E6B3A"><span class="dot"></span>5 · Trường phái hiện đại<span class="tab-pct" data-pct="ch5">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch5"></span></span></a>
+      <a class="taburl" data-target="ch6" data-chapkey="ch6" style="--tab-color:#2E5A8C"><span class="dot"></span>6 · Tâm lý học sinh học<span class="tab-pct" data-pct="ch6">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch6"></span></span></a>
+      <a class="taburl" data-target="ch7" data-chapkey="ch7" style="--tab-color:#A34A7A"><span class="dot"></span>7 · Tiến trình học tập<span class="tab-pct" data-pct="ch7">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch7"></span></span></a>
+      <a class="taburl" data-target="ch8" data-chapkey="ch8" style="--tab-color:#8C6A2E"><span class="dot"></span>8 · Trí tuệ, Ý thức, Phát triển<span class="tab-pct" data-pct="ch8">0%</span><span class="tab-progress"><span class="tab-progress-fill" data-fill="ch8"></span></span></a>
+      <div class="navgroup-label">Tổng ôn</div>
+      <a class="taburl" data-target="mixreview" style="--tab-color:#D97757"><span class="dot"></span>🔀 Ôn trộn 8 chương</a>
+      <a class="taburl" data-target="cheatsheet" style="--tab-color:#EFE9DA"><span class="dot"></span>Cheat sheet 1 trang</a>
+    </nav>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0% đã xem qua</div>
+      <div class="progress-label" id="masteryLabel" style="margin-top:4px;">0/0 câu đã thuộc</div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Ôn thi · Tâm lý học đại cương</div>
+      <h1>Bức tranh tổng quan về Tâm lý học</h1>
+      <p class="lead">Bản HTML tương tác — bấm vào từng thẻ câu hỏi để tự kiểm tra (active recall), đánh dấu "Đã thuộc / Cần ôn lại", theo dõi tiến độ theo từng chương, và dùng chế độ Ôn trộn để luyện theo kiểu interleaving.</p>
+      <div class="stat-strip" id="statStrip">
+        <div class="stat-chip"><b id="statMastered">0</b>Câu đã thuộc</div>
+        <div class="stat-chip"><b id="statReview">0</b>Câu cần ôn lại</div>
+        <div class="stat-chip"><b id="statWeakest">–</b>Chương yếu nhất</div>
+      </div>
+      <div class="scope-note">
+
+        <b>Lưu ý phạm vi:</b> Chương 1–5 biên soạn theo khung chuẩn môn "Tâm lý học đại cương" phổ biến ở Việt Nam. Chương 6–8 (Sinh học, Học tập, Trí tuệ–Ý thức–Phát triển) được bổ sung, đối chiếu thuật ngữ và nội dung với giáo trình <b><i>Introduction to Psychology</i> — James W. Kalat</b> (bản 9e/10e, cấu trúc chương: What Is Psychology? · Scientific Methods · Biological Psychology · Sensation and Perception · Development · Learning · Memory · Cognition and Language · Intelligence · Consciousness · Motivated Behaviors · Emotions, Stress and Health · Social Psychology · Personality · Abnormal Psychology) để bao quát gần hơn với 8 chủ đề của học phần. Vẫn chưa đối chiếu với slide/giáo trình cụ thể của giảng viên bạn — vui lòng gửi nếu có để tôi cập nhật chính xác hơn.
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 1 ================= -->
+    <section class="chapter" id="ch1" style="--chapter-color:#B7791F; --chapter-color-soft:#FBF1DD;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 1</div>
+        <h2>Tâm lý học là gì?</h2>
+        <div class="sub">Đối tượng, nhiệm vụ, bản chất và phương pháp nghiên cứu của Tâm lý học</div>
+      </div>
+
+      <h3 class="section-title">1.1 · Định nghĩa Tâm lý học (Psychology)</h3>
+      <div class="callout def">
+        <span class="label">Định nghĩa</span>
+        <p>Tâm lý học là khoa học nghiên cứu về hiện tượng tâm lý — tức các hoạt động tinh thần như cảm giác, tri giác, trí nhớ, tư duy, xúc cảm, ý chí, nhu cầu, động cơ, tính cách... — cùng với quy luật nảy sinh, vận hành và biểu hiện của chúng ra bên ngoài (qua hành vi, hoạt động).</p>
+      </div>
+      <p><b>Nói dễ hiểu:</b> Tâm lý học trả lời câu hỏi "Tại sao con người lại nghĩ, cảm nhận và hành động như vậy?". Nó không nghiên cứu trực tiếp bộ não (đó là việc của Sinh lý học thần kinh), mà nghiên cứu đời sống tinh thần được bộ não đó tạo ra.</p>
+      <p><b>Ví dụ liên hệ đời sống sinh viên:</b> Khi bạn thấy một sinh viên đi học trễ liên tục, Tâm lý học không dừng ở việc mô tả "bạn ấy hay trễ giờ", mà tìm hiểu quy luật đằng sau: động cơ học tập thấp? lo âu? quản lý thời gian kém? — đây chính là đi tìm hiện tượng tâm lý ẩn sau hành vi quan sát được.</p>
+
+      <h3 class="section-title">1.2 · Đối tượng nghiên cứu</h3>
+      <p><b>Đối tượng của Tâm lý học</b> là các hiện tượng tâm lý (hay còn gọi là "đời sống tâm lý", "thế giới nội tâm") của con người, gồm mọi biểu hiện tinh thần nảy sinh trong quá trình con người phản ánh hiện thực khách quan và hoạt động.</p>
+      <h4 class="sub-title">Phân loại hiện tượng tâm lý theo thời gian tồn tại</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th style="width:26%">Loại</th><th style="width:34%">Đặc điểm thời gian</th><th>Ví dụ</th></tr>
+        <tr><td><b>Quá trình tâm lý</b><br><i>(Psychological process)</i></td><td>Diễn ra trong thời gian ngắn, có mở đầu – diễn biến – kết thúc rõ</td><td>Một lần chú ý, một lần cảm xúc bực tức khi kẹt xe</td></tr>
+        <tr><td><b>Trạng thái tâm lý</b><br><i>(Psychological state)</i></td><td>Tồn tại tương đối lâu (vài giờ đến vài ngày), làm "nền" cho các hiện tượng tâm lý khác diễn ra</td><td>Trạng thái chú ý cao độ, tâm trạng chán nản kéo dài cả tuần</td></tr>
+        <tr><td><b>Thuộc tính tâm lý</b><br><i>(Psychological trait)</i></td><td>Ổn định, bền vững, khó thay đổi, tạo nên nét riêng của mỗi người</td><td>Tính cách hướng nội, khí chất nóng nảy, năng lực ngôn ngữ tốt</td></tr>
+      </table></div>
+      <div class="callout tip"><span class="label">Mẹo ghi nhớ</span><p>"Quá trình" = cơn mưa rào (ngắn, rõ đầu-cuối) → "Trạng thái" = trời âm u cả ngày (nền chung) → "Thuộc tính" = khí hậu vùng miền (đặc trưng lâu dài, ổn định).</p></div>
+
+      <h3 class="section-title">1.3 · Bản chất hiện tượng tâm lý người</h3>
+      <p>Theo quan điểm duy vật biện chứng (nền tảng của tâm lý học hiện đại nói chung), tâm lý người có 3 đặc điểm bản chất:</p>
+      <ul class="tidy">
+        <li><b>(1) Tâm lý là sự phản ánh hiện thực khách quan</b> vào não người thông qua hoạt động của mỗi người — không có hiện thực thì không có tâm lý; não là cơ quan phản ánh.</li>
+        <li><b>(2) Phản ánh mang tính chủ thể</b> — cùng một hiện thực nhưng mỗi người phản ánh khác nhau, tuỳ vào đặc điểm cơ thể, kinh nghiệm, thái độ riêng (VD: cùng một khoá đào tạo, có học viên thấy hứng thú, có người thấy nhàm chán).</li>
+        <li><b>(3) Bản chất xã hội – lịch sử</b> — tâm lý người hình thành, phát triển và biểu hiện trong hoạt động và giao tiếp xã hội; con người bị cô lập từ nhỏ (không có xã hội) sẽ không phát triển tâm lý người bình thường (VD kinh điển: các trường hợp trẻ hoang dã — "trẻ sói").</li>
+      </ul>
+
+      <h3 class="section-title">1.4 · Nhiệm vụ của Tâm lý học</h3>
+      <ul class="tidy">
+        <li>Nghiên cứu bản chất hoạt động tâm lý (cơ chế nảy sinh, vận hành).</li>
+        <li>Phát hiện các quy luật hình thành, phát triển của hiện tượng tâm lý.</li>
+        <li>Tìm ra cơ chế của các hiện tượng tâm lý (sinh lý – thần kinh, xã hội).</li>
+        <li>Ứng dụng các quy luật đó vào thực tiễn: giáo dục, quản trị nhân sự, đào tạo, trị liệu, marketing...</li>
+      </ul>
+      <div class="callout app"><span class="label">Liên hệ nghề nghiệp L&D</span><p>Khi bạn thiết kế một chương trình đào tạo, việc "biết vì sao học viên quên nhanh sau buổi học" (quy luật của trí nhớ) hay "vì sao học viên phản kháng với thay đổi quy trình mới" (quy luật tâm lý về cảm xúc – động cơ) chính là bạn đang vận dụng nhiệm vụ ứng dụng của tâm lý học.</p></div>
+
+      <h3 class="section-title">1.5 · Phương pháp nghiên cứu Tâm lý học</h3>
+      <div class="tbl-wrap"><table>
+        <tr><th>Phương pháp</th><th>Cách thực hiện</th><th>Ưu điểm</th><th>Hạn chế</th></tr>
+        <tr><td><b>Quan sát</b> <i>(Observation)</i></td><td>Theo dõi biểu hiện bên ngoài (hành vi, nét mặt, lời nói...) trong điều kiện tự nhiên</td><td>Khách quan, tự nhiên, không can thiệp</td><td>Bị động, khó lặp lại đúng tình huống, mất nhiều thời gian</td></tr>
+        <tr><td><b>Thực nghiệm</b> <i>(Experiment)</i></td><td>Chủ động tạo ra tình huống, kiểm soát biến số để đo phản ứng tâm lý</td><td>Chủ động, có thể lặp lại, kiểm chứng nhân–quả</td><td>Tình huống nhân tạo có thể khác thực tế (thiếu tính sinh thái)</td></tr>
+        <tr><td><b>Đàm thoại / Phỏng vấn</b></td><td>Trò chuyện, đặt câu hỏi trực tiếp để tìm hiểu suy nghĩ, cảm xúc</td><td>Thu thập được thông tin sâu, chủ quan của người được hỏi</td><td>Phụ thuộc kỹ năng người hỏi, dễ bị "nói cho vừa lòng"</td></tr>
+        <tr><td><b>Điều tra</b> <i>(Anket/Bảng hỏi)</i></td><td>Dùng bảng câu hỏi soạn sẵn, khảo sát số đông</td><td>Thu thập nhanh trên mẫu lớn, dễ định lượng</td><td>Câu trả lời có thể hời hợt, thiếu chiều sâu</td></tr>
+        <tr><td><b>Trắc nghiệm</b> <i>(Test)</i></td><td>Dùng công cụ đo lường đã chuẩn hoá (test trí tuệ, tính cách...)</td><td>Định lượng, so sánh được, có chuẩn đối chiếu</td><td>Dễ bị ảnh hưởng bởi tâm trạng lúc làm test, cần công cụ đã kiểm định</td></tr>
+        <tr><td><b>Phân tích sản phẩm hoạt động</b></td><td>Nghiên cứu qua sản phẩm con người tạo ra (bài viết, tranh vẽ, nhật ký...)</td><td>Khách quan, không cần sự có mặt của đối tượng</td><td>Chỉ suy luận gián tiếp, không thấy được quá trình tạo ra sản phẩm</td></tr>
+        <tr><td><b>Nghiên cứu tiểu sử</b> <i>(Case study)</i></td><td>Nghiên cứu sâu quá trình phát triển tâm lý của một cá nhân/nhóm nhỏ</td><td>Hiểu sâu, toàn diện một trường hợp</td><td>Khó khái quát hoá cho số đông</td></tr>
+      </table></div>
+      <div class="callout tip"><span class="label">Mẹo ghi nhớ 6 phương pháp chính</span><p>"QUAN sát – THỰC nghiệm – ĐÀM thoại – ĐIỀU tra – TRẮC nghiệm – SẢN phẩm" → viết tắt Q-T-Đ-Đ-T-S, liên tưởng câu "Quan Trọng Đừng Đùa Trước Sếp".</p></div>
+
+      <h3 class="section-title">1.6 · Các trường phái Tâm lý học lớn</h3>
+      <p>Các trường phái ra đời ở các thời điểm khác nhau, mỗi trường phái nhấn mạnh một khía cạnh của con người — chúng bổ sung cho nhau chứ không loại trừ nhau (xem thêm Chương 5).</p>
+      <div class="tbl-wrap"><table>
+        <tr><th>Trường phái</th><th>Đại diện</th><th>Nội dung cốt lõi</th><th>Hạn chế</th><th>Ứng dụng thực tế</th></tr>
+        <tr><td><b>Hành vi</b><br><i>Behaviorism</i></td><td>J. Watson, B.F. Skinner</td><td>Chỉ nghiên cứu hành vi quan sát được; hành vi hình thành qua điều kiện hoá (kích thích – phản ứng)</td><td>Bỏ qua tư duy, cảm xúc bên trong ("hộp đen")</td><td>Đào tạo kỹ năng qua khen thưởng/củng cố hành vi, huấn luyện động vật</td></tr>
+        <tr><td><b>Phân tâm học</b><br><i>Psychoanalysis</i></td><td>S. Freud</td><td>Hành vi bị chi phối bởi vô thức, xung đột bản năng từ thời thơ ấu</td><td>Khó kiểm chứng khoa học, dựa nhiều vào diễn giải</td><td>Trị liệu tâm lý sâu, phân tích giấc mơ, hiểu động cơ ẩn</td></tr>
+        <tr><td><b>Gestalt</b></td><td>M. Wertheimer, K. Koffka</td><td>Con người tri giác sự vật như một "tổng thể có tổ chức", không phải phép cộng các bộ phận rời rạc</td><td>Ít giải thích được các quá trình như học tập, động cơ</td><td>Thiết kế UX/UI, bố cục học liệu, quảng cáo</td></tr>
+        <tr><td><b>Nhận thức</b><br><i>Cognitive</i></td><td>J. Piaget, U. Neisser</td><td>Tập trung vào quá trình xử lý thông tin bên trong: tư duy, trí nhớ, ngôn ngữ, giải quyết vấn đề</td><td>Đôi khi "máy móc hoá" con người như một hệ xử lý thông tin</td><td>Thiết kế bài giảng theo tải nhận thức, cải thiện ghi nhớ</td></tr>
+        <tr><td><b>Nhân văn</b><br><i>Humanistic</i></td><td>A. Maslow, C. Rogers</td><td>Con người có xu hướng tự nhiên vươn tới tự hoàn thiện (self-actualization); đề cao giá trị, tiềm năng con người</td><td>Khái niệm trừu tượng, khó đo lường khách quan</td><td>Coaching, huấn luyện lấy người học làm trung tâm, tư vấn</td></tr>
+        <tr><td><b>Sinh lý – thần kinh</b><br><i>Biological</i></td><td>R. Sperry, nhiều nhà thần kinh học</td><td>Tâm lý là chức năng của não bộ và hệ thần kinh; nghiên cứu cơ chế sinh học của hành vi</td><td>Chưa giải thích trọn vẹn khía cạnh xã hội, ý nghĩa cá nhân</td><td>Y học, dược lý thần kinh, phục hồi chức năng</td></tr>
+      </table></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 1</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch1"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 2 ================= -->
+    <section class="chapter" id="ch2" style="--chapter-color:#0F6B72; --chapter-color-soft:#DEEEEE;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 2</div>
+        <h2>Các quá trình tâm lý cơ bản (nhận thức)</h2>
+        <div class="sub">Nhận thức cảm tính (cảm giác, tri giác) và nhận thức lý tính (tư duy, tưởng tượng), cùng chú ý và trí nhớ</div>
+      </div>
+
+      <h3 class="section-title">2.1 · Cảm giác (Sensation)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Cảm giác là quá trình tâm lý phản ánh từng thuộc tính riêng lẻ, bề ngoài của sự vật, hiện tượng khi chúng đang trực tiếp tác động vào giác quan.</p></div>
+      <p><b>Dễ hiểu:</b> Cảm giác là "tín hiệu thô" — chỉ ghi nhận từng đặc điểm đơn lẻ (màu, mùi, độ nóng, âm thanh...), chưa gộp thành một sự vật hoàn chỉnh, và phải có kích thích trực tiếp đang tác động.</p>
+      <p><b>Ví dụ:</b> Khi nhắm mắt sờ một vật, bạn cảm nhận "lạnh", "cứng", "trơn" — đó là các cảm giác riêng lẻ, chưa biết đó là vật gì.</p>
+      <ul class="tidy">
+        <li><b>Cảm giác bên ngoài:</b> thị giác, thính giác, khứu giác, vị giác, xúc giác.</li>
+        <li><b>Cảm giác bên trong:</b> cảm giác vận động, thăng bằng, cảm giác cơ thể (đói, no, đau nội tạng...).</li>
+      </ul>
+
+      <h3 class="section-title">2.2 · Tri giác (Perception)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Tri giác là quá trình tâm lý phản ánh một cách trọn vẹn các thuộc tính bề ngoài của sự vật, hiện tượng khi chúng trực tiếp tác động vào giác quan, dựa trên cơ sở tổng hợp nhiều cảm giác.</p></div>
+      <p><b>Dễ hiểu:</b> Nếu cảm giác là các "mảnh ghép" thì tri giác là "bức tranh hoàn chỉnh" — não gộp các cảm giác lại và nhận ra "À, đây là quả cam" chứ không chỉ là "tròn, vàng, thơm" rời rạc.</p>
+      <p><b>Ví dụ:</b> Nghe một đoạn nhạc, bạn không chỉ nghe từng nốt rời rạc (cảm giác) mà nhận ra ngay đó là bài hát quen thuộc (tri giác).</p>
+
+      <h4 class="sub-title">Bảng phân biệt Cảm giác và Tri giác</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Tiêu chí</th><th>Cảm giác</th><th>Tri giác</th></tr>
+        <tr><td>Mức độ phản ánh</td><td>Từng thuộc tính riêng lẻ, bề ngoài</td><td>Trọn vẹn, tổng thể các thuộc tính</td></tr>
+        <tr><td>Cơ chế</td><td>Một giác quan ghi nhận trực tiếp</td><td>Tổng hợp nhiều cảm giác + kinh nghiệm đã có</td></tr>
+        <tr><td>Kết quả</td><td>"Nóng", "đỏ", "the"</td><td>"Đây là ly trà đào đang nóng"</td></tr>
+        <tr><td>Ví dụ đào tạo</td><td>Học viên nghe thấy giọng giảng viên to (cảm giác âm lượng)</td><td>Học viên nhận ra đây là giảng viên quen, đang giảng bài khó (tri giác)</td></tr>
+      </table></div>
+
+      <h4 class="sub-title">Một số quy luật của tri giác</h4>
+      <ul class="tidy">
+        <li><b>Tính lựa chọn:</b> chỉ tri giác rõ một số đối tượng nổi bật trên nền chung (VD: slide có 1 chữ in đậm màu đỏ sẽ được chú ý trước).</li>
+        <li><b>Tính ổn định (hằng định):</b> hình ảnh sự vật được tri giác ổn định dù điều kiện quan sát thay đổi (nhìn cửa từ góc nghiêng vẫn nhận ra là hình chữ nhật).</li>
+        <li><b>Tính có ý nghĩa:</b> tri giác luôn gắn với việc gọi tên, hiểu ý nghĩa sự vật dựa trên kinh nghiệm đã có.</li>
+        <li><b>Ảo giác (ảo ảnh tri giác):</b> tri giác không chính xác về sự vật, có tính quy luật (VD ảo ảnh Müller-Lyer).</li>
+      </ul>
+
+      <h3 class="section-title">2.3 · Chú ý (Attention)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Chú ý là sự tập trung của ý thức vào một hay một nhóm đối tượng nhất định, nhằm phản ánh đối tượng đó một cách đầy đủ và rõ ràng hơn.</p></div>
+      <p><b>Lưu ý:</b> Chú ý không phải một quá trình tâm lý độc lập tạo ra sản phẩm riêng, mà là điều kiện đi kèm, làm cho các quá trình tâm lý khác (tri giác, tư duy, trí nhớ...) hoạt động hiệu quả hơn.</p>
+      <div class="tbl-wrap"><table>
+        <tr><th>Loại</th><th>Đặc điểm</th><th>Ví dụ</th></tr>
+        <tr><td><b>Không chủ định</b></td><td>Không có mục đích, không cần cố gắng, do kích thích mới lạ/mạnh gây ra</td><td>Đang họp bỗng nghe tiếng chuông điện thoại lớn, quay đầu nhìn</td></tr>
+        <tr><td><b>Có chủ định</b></td><td>Có mục đích, cần nỗ lực ý chí để duy trì</td><td>Cố gắng tập trung đọc tài liệu dù buồn ngủ</td></tr>
+        <tr><td><b>Sau chủ định</b></td><td>Ban đầu có chủ định, sau trở nên hứng thú nên duy trì mà không cần nỗ lực nhiều</td><td>Ban đầu ép mình đọc sách, sau đó cuốn theo nội dung, đọc say mê</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Thiết kế mở đầu buổi đào tạo nên tận dụng "chú ý không chủ định" (câu chuyện bất ngờ, hình ảnh lạ) để thu hút, sau đó chuyển học viên sang trạng thái "chú ý sau chủ định" bằng cách tạo hứng thú với nội dung, thay vì chỉ ép buộc "chú ý có chủ định" liên tục — vốn rất dễ gây mệt mỏi.</p></div>
+
+      <h3 class="section-title">2.4 · Trí nhớ (Memory)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Trí nhớ là quá trình tâm lý phản ánh những kinh nghiệm đã có của cá nhân dưới hình thức biểu tượng, bao gồm sự ghi nhớ, gìn giữ và tái hiện lại những gì cá nhân đã trải qua.</p></div>
+      <h4 class="sub-title">4 quá trình cơ bản của trí nhớ</h4>
+      <ul class="tidy">
+        <li><b>Ghi nhớ (Encoding):</b> quá trình đưa thông tin vào trí nhớ. Có ghi nhớ không chủ định (tình cờ) và có chủ định (cố ý học thuộc).</li>
+        <li><b>Gìn giữ (Storage):</b> quá trình củng cố, lưu trữ thông tin đã ghi nhớ.</li>
+        <li><b>Tái hiện (Retrieval):</b> làm sống lại thông tin đã ghi nhớ, gồm nhận lại (thấy quen) và nhớ lại (gọi tên chính xác không cần vật kích thích).</li>
+        <li><b>Quên (Forgetting):</b> không tái hiện được hoặc tái hiện sai — là quy luật tự nhiên, quên nhanh nhất ngay sau khi học nếu không ôn tập (liên hệ "đường cong quên lãng" Ebbinghaus).</li>
+      </ul>
+      <h4 class="sub-title">Phân loại trí nhớ theo thời gian lưu giữ</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Loại</th><th>Thời gian lưu giữ</th><th>Ví dụ</th></tr>
+        <tr><td><b>Trí nhớ cảm giác</b></td><td>Rất ngắn (dưới 1 giây)</td><td>Ảnh lưu lại tích tắc trên võng mạc khi vẫy que sáng trong đêm</td></tr>
+        <tr><td><b>Trí nhớ ngắn hạn / làm việc</b></td><td>Vài giây đến ~1 phút, dung lượng ~7±2 đơn vị</td><td>Nhớ số điện thoại vừa nghe để bấm gọi ngay</td></tr>
+        <tr><td><b>Trí nhớ dài hạn</b></td><td>Có thể lưu giữ suốt đời, dung lượng gần như không giới hạn</td><td>Nhớ tên trường cấp 1, kỹ năng đi xe đạp</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Vì trí nhớ làm việc chỉ chứa được khoảng 5–9 đơn vị thông tin cùng lúc, khi thiết kế bài giảng nên chia nhỏ nội dung (chunking) — ví dụ chia quy trình 12 bước thành 3 nhóm 4 bước — để không gây quá tải nhận thức cho học viên.</p></div>
+
+      <h3 class="section-title">2.5 · Tư duy (Thinking)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Tư duy là quá trình tâm lý phản ánh những thuộc tính bản chất, những mối liên hệ và quan hệ có tính quy luật của sự vật, hiện tượng trong hiện thực khách quan mà trước đó ta chưa biết.</p></div>
+      <p><b>Dễ hiểu:</b> Tư duy là "nhận thức lý tính" — đi sâu vào bản chất, không dừng ở vẻ ngoài như cảm giác/tri giác. Tư duy chỉ xuất hiện khi gặp "tình huống có vấn đề" — điều mới, chưa biết cách giải quyết bằng kinh nghiệm cũ.</p>
+      <p><b>Ví dụ:</b> Khi máy chiếu trong lớp đột nhiên không lên hình, giảng viên phải tư duy: kiểm tra dây cắm, thử cổng HDMI khác, tìm nguyên nhân.</p>
+      <ul class="tidy">
+        <li><b>Phân tích – Tổng hợp:</b> chia nhỏ đối tượng để nghiên cứu, rồi kết hợp lại thành một chỉnh thể.</li>
+        <li><b>So sánh:</b> xác định điểm giống và khác nhau giữa các sự vật, hiện tượng.</li>
+        <li><b>Trừu tượng hoá – Khái quát hoá:</b> gạt bỏ đặc điểm không bản chất, giữ lại đặc điểm chung để hình thành khái niệm.</li>
+      </ul>
+
+      <h3 class="section-title">2.6 · Tưởng tượng (Imagination)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Tưởng tượng là quá trình tâm lý phản ánh những cái chưa từng có trong kinh nghiệm của cá nhân, bằng cách xây dựng những hình ảnh mới trên cơ sở những biểu tượng đã có.</p></div>
+      <p><b>Ví dụ:</b> Thiết kế một kịch bản tình huống đào tạo hoàn toàn mới (chưa từng xảy ra trong thực tế công ty) dựa trên các tình huống có thật đã gặp.</p>
+      <h4 class="sub-title">Bảng phân biệt Tư duy và Tưởng tượng</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Tiêu chí</th><th>Tư duy</th><th>Tưởng tượng</th></tr>
+        <tr><td>Xuất phát từ</td><td>Tình huống có vấn đề, dữ kiện rõ ràng, logic</td><td>Tình huống chưa xác định rõ, mang tính "lấp khoảng trống"</td></tr>
+        <tr><td>Cách vận hành</td><td>Dùng khái niệm, phán đoán, suy lý logic, chặt chẽ</td><td>Kết hợp hình ảnh, biểu tượng theo cách mới, ít ràng buộc logic</td></tr>
+        <tr><td>Kết quả</td><td>Khái niệm, quy luật, giải pháp đúng/sai rõ ràng</td><td>Hình ảnh mới, ý tưởng, sản phẩm sáng tạo</td></tr>
+        <tr><td>Ví dụ</td><td>Tính toán ngân sách đào tạo còn thiếu bao nhiêu</td><td>Hình dung ra một trò chơi đào tạo hoàn toàn mới</td></tr>
+      </table></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 2</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch2"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 3 ================= -->
+    <section class="chapter" id="ch3" style="--chapter-color:#C1502E; --chapter-color-soft:#FBE7DF;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 3</div>
+        <h2>Xúc cảm, tình cảm và ý chí</h2>
+        <div class="sub">Thái độ của con người với hiện thực, và mặt hành động có ý thức, có mục đích vượt khó khăn</div>
+      </div>
+
+      <h3 class="section-title">3.1 · Xúc cảm (Emotion) và Tình cảm (Feeling)</h3>
+      <div class="callout def"><span class="label">Định nghĩa chung</span><p>Xúc cảm và tình cảm đều là những rung động, thái độ của con người đối với sự vật, hiện tượng có liên quan đến việc thoả mãn hay không thoả mãn nhu cầu của họ.</p></div>
+      <h4 class="sub-title">Bảng phân biệt Xúc cảm và Tình cảm</h4>
+      <div class="vs-wrap">
+        <div class="vs-card left">
+          <h4>🌊 Xúc cảm <span style="font-size:12px; font-weight:400; color:var(--muted);">(Emotion)</span></h4>
+          <ul>
+            <li>Quá trình tâm lý — <b>nhất thời</b>, xảy ra nhanh</li>
+            <li>Gắn với một tình huống, sự vật <b>cụ thể</b> đang xảy ra</li>
+            <li>Có ở <b>cả người và động vật</b> bậc cao</li>
+            <li>VD: vui mừng khi nghe tin học viên đậu chứng chỉ hôm nay</li>
+          </ul>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="vs-card right">
+          <h4>🌳 Tình cảm <span style="font-size:12px; font-weight:400; color:var(--muted);">(Feeling)</span></h4>
+          <ul>
+            <li>Thuộc tính tâm lý — <b>ổn định, bền vững</b>, khái quát</li>
+            <li>Gắn với một đối tượng <b>xác định, khái quát</b> (con người, sự nghiệp...)</li>
+            <li><b>Chỉ có ở con người</b></li>
+            <li>VD: tình yêu nghề đào tạo, gắn bó nhiều năm với công ty</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout tip"><span class="label">Mẹo ghi nhớ</span><p>Xúc cảm giống "cơn sóng" — dâng lên rồi hạ xuống nhanh theo từng tình huống. Tình cảm giống "dòng chảy ngầm" — âm ỉ, bền vững, chi phối lâu dài.</p></div>
+
+      <h4 class="sub-title">Các mức độ / hình thức biểu hiện của xúc cảm</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Mức độ</th><th>Đặc điểm</th></tr>
+        <tr><td><b>Màu sắc xúc cảm của cảm giác</b></td><td>Sắc thái cảm xúc đi kèm một cảm giác cụ thể, rất nhẹ (VD: màu đỏ gây cảm giác "nóng")</td></tr>
+        <tr><td><b>Xúc cảm</b></td><td>Xảy ra nhanh, mạnh, rõ rệt, có thể quan sát qua nét mặt, cử chỉ</td></tr>
+        <tr><td><b>Tâm trạng</b></td><td>Trạng thái cảm xúc chung, kéo dài, không hướng vào đối tượng cụ thể, ảnh hưởng toàn bộ hoạt động</td></tr>
+        <tr><td><b>Xúc động</b></td><td>Trạng thái cảm xúc bùng nổ mạnh, xảy ra trong thời gian ngắn, khó kiểm soát lý trí</td></tr>
+        <tr><td><b>Say mê</b></td><td>Trạng thái tình cảm mạnh, sâu sắc, bền vững, thúc đẩy hành động hướng tới đối tượng</td></tr>
+      </table></div>
+
+      <h4 class="sub-title">Các quy luật của đời sống tình cảm</h4>
+      <ul class="tidy">
+        <li><b>Quy luật lây lan:</b> tình cảm của người này có thể "lan truyền" sang người khác (VD: không khí hào hứng của giảng viên lan sang cả lớp).</li>
+        <li><b>Quy luật thích ứng:</b> một tình cảm lặp đi lặp lại nhiều lần với cường độ không đổi sẽ dần bị "chai sạn", suy yếu.</li>
+        <li><b>Quy luật tương phản (cảm ứng):</b> sự xuất hiện/suy yếu của một tình cảm có thể làm tăng cường một tình cảm đối lập xảy ra đồng thời hoặc nối tiếp.</li>
+        <li><b>Quy luật di chuyển:</b> tình cảm có thể "lây" từ đối tượng này sang đối tượng khác có liên quan (VD: "giận cá chém thớt").</li>
+        <li><b>Quy luật pha trộn:</b> hai tình cảm đối lập nhau có thể cùng tồn tại, không loại trừ nhau (VD: vừa lo lắng vừa hào hứng trước khoá đào tạo mới).</li>
+        <li><b>Quy luật hình thành tình cảm từ xúc cảm:</b> tình cảm được hình thành từ tổng hợp hoá, khái quát hoá nhiều xúc cảm cùng loại lặp đi lặp lại.</li>
+      </ul>
+
+      <h3 class="section-title">3.2 · Ý chí (Will) và hành động ý chí</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Ý chí là mặt năng động của ý thức, biểu hiện ở năng lực thực hiện những hành động có mục đích, đòi hỏi phải có sự nỗ lực khắc phục khó khăn.</p></div>
+      <p><b>Dễ hiểu:</b> Ý chí là "cơ bắp tinh thần" giúp con người vượt qua trở ngại (bên ngoài lẫn bên trong như lười biếng, sợ hãi) để đạt mục đích đã đề ra.</p>
+      <h4 class="sub-title">5 phẩm chất của ý chí</h4>
+      <ul class="tidy">
+        <li><b>Tính mục đích:</b> biết đặt ra mục đích rõ ràng và kiên định theo đuổi.</li>
+        <li><b>Tính độc lập:</b> tự quyết định và thực hiện hành động theo quan điểm riêng, không a dua.</li>
+        <li><b>Tính quyết đoán:</b> biết đưa ra quyết định kịp thời, không do dự khi cần.</li>
+        <li><b>Tính kiên trì:</b> duy trì nỗ lực đến cùng dù gặp khó khăn, thất bại tạm thời.</li>
+        <li><b>Tính tự chủ:</b> làm chủ được bản thân, kiềm chế hành vi, cảm xúc tiêu cực.</li>
+      </ul>
+      <h4 class="sub-title">Cấu trúc một hành động ý chí điển hình</h4>
+      <ul class="tidy">
+        <li><b>Bước 1</b> — Xác định mục đích, hình thành động cơ hành động.</li>
+        <li><b>Bước 2</b> — Lập kế hoạch, lựa chọn phương pháp, phương tiện thực hiện.</li>
+        <li><b>Bước 3</b> — Quyết định hành động (chọn 1 phương án và cam kết thực hiện).</li>
+        <li><b>Bước 4</b> — Thực hiện hành động, nỗ lực khắc phục khó khăn phát sinh.</li>
+        <li><b>Bước 5</b> — Đánh giá kết quả hành động, rút kinh nghiệm.</li>
+      </ul>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Khi thiết kế mục tiêu học tập cho học viên trưởng thành, việc giúp họ tự đặt mục tiêu rõ ràng (bước 1) và có kế hoạch hành động cụ thể sau khoá học (bước 2) chính là cách "kích hoạt" hành động ý chí, giúp kiến thức được áp dụng thay vì "học xong rồi quên".</p></div>
+
+      <h3 class="section-title">3.3 · Stress và ứng phó (Coping) <span style="font-size:12px; font-weight:400; color:var(--muted);">— bổ sung theo Kalat, ch. "Emotions, Stress, and Health"</span></h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Stress là phản ứng sinh lý – tâm lý của cơ thể trước một tác nhân gây căng thẳng (stressor), khi cá nhân cảm thấy yêu cầu của tình huống vượt quá khả năng ứng phó của mình.</p></div>
+      <h4 class="sub-title">Hội chứng thích nghi chung (General Adaptation Syndrome — Hans Selye)</h4>
+      <ul class="tidy">
+        <li><b>Giai đoạn báo động (Alarm):</b> cơ thể huy động năng lượng tức thời — tim đập nhanh, tuyến thượng thận tiết adrenaline/cortisol ("chiến hay chạy" — fight or flight).</li>
+        <li><b>Giai đoạn đề kháng (Resistance):</b> cơ thể cố gắng thích nghi, duy trì hoạt động dù stressor còn tồn tại; nguồn lực dần cạn kiệt.</li>
+        <li><b>Giai đoạn kiệt sức (Exhaustion):</b> nguồn lực cạn kiệt, hệ miễn dịch suy yếu, dễ mắc bệnh, kiệt sức nghề nghiệp (burnout).</li>
+      </ul>
+      <h4 class="sub-title">2 kiểu ứng phó (Coping) chính</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Kiểu ứng phó</th><th>Đặc điểm</th><th>Ví dụ trong công việc L&D</th></tr>
+        <tr><td><b>Tập trung vào vấn đề</b><br><i>(Problem-focused)</i></td><td>Hành động trực tiếp để thay đổi/giải quyết nguồn gây stress</td><td>Lập lại kế hoạch, chia nhỏ deadline khi khối lượng đào tạo quá tải</td></tr>
+        <tr><td><b>Tập trung vào cảm xúc</b><br><i>(Emotion-focused)</i></td><td>Điều chỉnh phản ứng cảm xúc của bản thân khi không thể thay đổi nguồn gây stress</td><td>Hít thở sâu, chia sẻ với đồng nghiệp, tái định khung suy nghĩ trước một buổi đào tạo khó</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Burnout (kiệt sức nghề nghiệp) ở giảng viên/TVV thường là hệ quả của giai đoạn "kiệt sức" kéo dài khi liên tục ở trạng thái báo động-đề kháng mà không có giai đoạn phục hồi — thiết kế lịch đào tạo cần xen kẽ thời gian nghỉ để phòng ngừa.</p></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 3</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch3"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 4 ================= -->
+    <section class="chapter" id="ch4" style="--chapter-color:#6B4C6E; --chapter-color-soft:#F0E6EF;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 4</div>
+        <h2>Các thuộc tính tâm lý cá nhân</h2>
+        <div class="sub">Xu hướng (nhu cầu, hứng thú, lý tưởng...) + Tính cách + Khí chất + Năng lực = cấu trúc Nhân cách</div>
+      </div>
+
+      <h3 class="section-title">4.1 · Xu hướng nhân cách và Nhu cầu (Needs)</h3>
+      <p><b>Xu hướng nhân cách</b> là hệ thống động lực quy định tính lựa chọn của thái độ và hành động của con người, bao gồm: nhu cầu, hứng thú, lý tưởng, thế giới quan, niềm tin.</p>
+      <div class="callout def"><span class="label">Định nghĩa Nhu cầu</span><p>Nhu cầu là sự đòi hỏi tất yếu của con người để tồn tại và phát triển, được con người phản ánh và tạo ra tính tích cực nhằm thoả mãn đòi hỏi đó.</p></div>
+      <h4 class="sub-title">Tháp nhu cầu Maslow</h4>
+      <div class="diagram-card">
+        <svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:520px; height:auto; display:block; margin:0 auto; font-family:'Be Vietnam Pro',sans-serif;">
+          <polygon points="205,10 275,10 300,58 180,58" fill="#3E6B3A"/>
+          <polygon points="180,58 300,58 335,106 145,106" fill="#6B4C6E"/>
+          <polygon points="145,106 335,106 370,154 110,154" fill="#0F6B72"/>
+          <polygon points="110,154 370,154 405,202 75,202" fill="#B7791F"/>
+          <polygon points="75,202 405,202 440,250 40,250" fill="#2E5A8C"/>
+          <text x="240" y="38" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">5. Tự hoàn thiện</text>
+          <text x="240" y="86" font-size="11.5" fill="#fff" text-anchor="middle" font-weight="700">4. Được tôn trọng</text>
+          <text x="240" y="134" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">3. Xã hội</text>
+          <text x="240" y="182" font-size="12.5" fill="#fff" text-anchor="middle" font-weight="700">2. An toàn</text>
+          <text x="240" y="230" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">1. Sinh lý</text>
+        </svg>
+        <div class="diagram-caption">Nhu cầu bậc thấp (đáy tháp) cần được thoả mãn tương đối trước khi các nhu cầu bậc cao hơn trở nên thúc đẩy mạnh.</div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Bậc</th><th>Nhu cầu</th><th>Ví dụ trong công việc/học tập</th></tr>
+        <tr><td>1</td><td>Sinh lý (ăn, ngủ, nghỉ)</td><td>Cần giờ giải lao, ăn uống hợp lý trong buổi đào tạo cả ngày</td></tr>
+        <tr><td>2</td><td>An toàn (ổn định, an ninh)</td><td>Cần công việc ổn định, môi trường học không bị đe doạ, chỉ trích</td></tr>
+        <tr><td>3</td><td>Xã hội (thuộc về, tình cảm)</td><td>Muốn được hoà nhập vào nhóm học viên, được đồng nghiệp chấp nhận</td></tr>
+        <tr><td>4</td><td>Được tôn trọng (công nhận, địa vị)</td><td>Muốn được ghi nhận thành tích, được gọi là "chuyên gia"</td></tr>
+        <tr><td>5</td><td>Tự hoàn thiện (self-actualization)</td><td>Muốn phát huy hết tiềm năng, sáng tạo chương trình đào tạo đột phá</td></tr>
+      </table></div>
+      <div class="callout tip"><span class="label">Mẹo ghi nhớ Maslow</span><p>"Sinh – An – Xã – Tôn – Hoàn" (Sinh lý – An toàn – Xã hội – Tôn trọng – Hoàn thiện), đọc như câu thần chú leo thang từ đáy lên đỉnh tháp.</p></div>
+
+      <h3 class="section-title">4.2 · Động cơ (Motivation)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Động cơ là cái thúc đẩy con người hoạt động nhằm thoả mãn một nhu cầu nhất định; động cơ trả lời câu hỏi "hành động vì cái gì?".</p></div>
+      <h4 class="sub-title">Bảng phân biệt Nhu cầu và Động cơ</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Tiêu chí</th><th>Nhu cầu</th><th>Động cơ</th></tr>
+        <tr><td>Bản chất</td><td>Trạng thái thiếu hụt, đòi hỏi cần được thoả mãn</td><td>Lực thúc đẩy hành động cụ thể để thoả mãn nhu cầu đó</td></tr>
+        <tr><td>Vai trò</td><td>Là "nguồn gốc", điều kiện nảy sinh động cơ</td><td>Là "động lực trực tiếp" thúc đẩy hành vi</td></tr>
+        <tr><td>Ví dụ</td><td>Nhu cầu được công nhận năng lực</td><td>Vì vậy quyết tâm hoàn thành chứng chỉ đào tạo chuyên nghiệp</td></tr>
+      </table></div>
+      <ul class="tidy">
+        <li><b>Động cơ bên trong (Intrinsic):</b> xuất phát từ chính sự hứng thú, ý nghĩa của hoạt động.</li>
+        <li><b>Động cơ bên ngoài (Extrinsic):</b> xuất phát từ yếu tố bên ngoài như phần thưởng, áp lực, điểm số.</li>
+      </ul>
+      <h4 class="sub-title">Hai lý thuyết động cơ kinh điển <span style="font-size:12px; font-weight:400; color:var(--muted);">— bổ sung theo Kalat, ch. "Motivated Behaviors"</span></h4>
+      <ul class="tidy">
+        <li><b>Thuyết giảm nhu cầu (Drive-reduction theory — Clark Hull):</b> khi cơ thể mất cân bằng (VD: đói, khát), nó tạo ra một "lực thúc đẩy" (drive) để khôi phục trạng thái cân bằng nội môi (homeostasis); hành vi được thúc đẩy nhằm giảm sự thúc đẩy khó chịu đó.</li>
+        <li><b>Định luật Yerkes-Dodson:</b> hiệu suất thực hiện công việc đạt mức tối ưu ở mức độ hưng phấn/áp lực (arousal) VỪA PHẢI — quá thấp thì thiếu động lực, quá cao thì lo lắng làm giảm hiệu suất (mối quan hệ hình chữ U ngược).</li>
+      </ul>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Định luật Yerkes-Dodson lý giải vì sao tạo áp lực vừa đủ (deadline hợp lý, mục tiêu thử thách) giúp học viên/TVV làm việc hiệu quả hơn, nhưng áp lực quá lớn (KPI phi thực tế) lại phản tác dụng, gây lo âu và giảm hiệu suất.</p></div>
+      <div class="diagram-card">
+        <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Be Vietnam Pro',sans-serif;">
+          <line x1="50" y1="180" x2="450" y2="180" stroke="#6B6558" stroke-width="1.5"/>
+          <line x1="50" y1="180" x2="50" y2="20" stroke="#6B6558" stroke-width="1.5"/>
+          <path d="M50 170 C130 40, 250 20, 250 20 C250 20, 370 40, 450 170" fill="none" stroke="#6B4C6E" stroke-width="4" stroke-linecap="round"/>
+          <line x1="250" y1="180" x2="250" y2="20" stroke="#D8D3C4" stroke-width="1.5" stroke-dasharray="4,4"/>
+          <circle cx="250" cy="20" r="5" fill="#6B4C6E"/>
+          <text x="250" y="12" font-size="12" fill="#6B4C6E" text-anchor="middle" font-weight="700">Hiệu suất tối ưu</text>
+          <text x="80" y="165" font-size="11.5" fill="var(--ink)" text-anchor="middle">Áp lực thấp</text>
+          <text x="80" y="178" font-size="10.5" fill="var(--muted)" text-anchor="middle">→ thiếu động lực</text>
+          <text x="420" y="165" font-size="11.5" fill="var(--ink)" text-anchor="middle">Áp lực cao</text>
+          <text x="420" y="178" font-size="10.5" fill="var(--muted)" text-anchor="middle">→ lo âu, giảm hiệu suất</text>
+          <text x="15" y="105" font-size="11" fill="var(--muted)" transform="rotate(-90 15 105)">Hiệu suất</text>
+          <text x="250" y="205" font-size="11" fill="var(--muted)" text-anchor="middle">Mức độ hưng phấn / áp lực (arousal)</text>
+        </svg>
+        <div class="diagram-caption">Đường cong hình chữ U ngược của Yerkes-Dodson: hiệu suất đạt đỉnh ở mức áp lực vừa phải, giảm dần ở hai đầu.</div>
+      </div>
+
+      <h3 class="section-title">4.3 · Tính cách (Character)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Tính cách là sự kết hợp độc đáo các đặc điểm tâm lý ổn định của con người, quy định phương thức hành vi điển hình của người đó trong điều kiện, hoàn cảnh sống nhất định, thể hiện thái độ của họ đối với thế giới xung quanh.</p></div>
+      <p><b>Dễ hiểu:</b> Tính cách trả lời câu hỏi "người này có thái độ và cách cư xử như thế nào?" — VD: trung thực, chăm chỉ, ích kỷ, hoà đồng. Tính cách chịu ảnh hưởng lớn từ giáo dục, môi trường sống — có thể thay đổi/rèn luyện theo thời gian.</p>
+      <h4 class="sub-title">Cấu trúc tính cách: Hệ thống thái độ + Hệ thống hành vi</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Hệ thống thái độ (nội dung)</th><th>Biểu hiện qua hành vi (hình thức)</th></tr>
+        <tr><td>Thái độ với xã hội, tập thể</td><td>Cử chỉ, điệu bộ, ngôn ngữ, tác phong khi giao tiếp</td></tr>
+        <tr><td>Thái độ với lao động, công việc</td><td>Cách xử lý công việc, mức độ trách nhiệm</td></tr>
+        <tr><td>Thái độ với người khác</td><td>Cách ứng xử, giao tiếp với đồng nghiệp, học viên</td></tr>
+        <tr><td>Thái độ với bản thân</td><td>Cách nói về bản thân, phản ứng khi được khen/chê</td></tr>
+      </table></div>
+
+      <h3 class="section-title">4.4 · Khí chất (Temperament)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Khí chất là thuộc tính tâm lý cá nhân gắn liền với kiểu hoạt động thần kinh, biểu hiện cường độ, tốc độ, nhịp độ của các hoạt động tâm lý, quy định sắc thái hành vi, cử chỉ, cách nói năng của cá nhân.</p></div>
+      <p><b>Dễ hiểu:</b> Nếu tính cách là "nội dung" (thái độ đúng/sai, tốt/xấu), thì khí chất là "phong cách/tốc độ" biểu hiện ra ngoài — mang tính bẩm sinh nhiều hơn, khó thay đổi.</p>
+      <h4 class="sub-title">4 loại khí chất cổ điển (Hippocrates – Pavlov)</h4>
+      <div class="temp-grid">
+        <div class="temp-card" style="background:#C1502E;">
+          <div class="temp-tag">Mạnh · Cân bằng · Linh hoạt</div>
+          <h4>Hăng hái</h4>
+          <div class="temp-en">Sanguine</div>
+          <p>Vui vẻ, hoạt bát, dễ thích nghi, cảm xúc đến nhanh đi nhanh.</p>
+          <p>✓ Năng động, hoà đồng &nbsp;·&nbsp; ✗ Thiếu kiên trì, hay đổi ý</p>
+        </div>
+        <div class="temp-card" style="background:#B7791F;">
+          <div class="temp-tag">Mạnh · Không cân bằng</div>
+          <h4>Nóng nảy</h4>
+          <div class="temp-en">Choleric</div>
+          <p>Phản ứng mạnh, nhanh, dứt khoát nhưng dễ bốc đồng.</p>
+          <p>✓ Quyết đoán, nhiệt huyết &nbsp;·&nbsp; ✗ Dễ xung đột</p>
+        </div>
+        <div class="temp-card" style="background:#0F6B72;">
+          <div class="temp-tag">Mạnh · Cân bằng · Không linh hoạt</div>
+          <h4>Bình thản</h4>
+          <div class="temp-en">Phlegmatic</div>
+          <p>Chậm rãi, ít bộc lộ cảm xúc, kiên trì, ổn định.</p>
+          <p>✓ Điềm tĩnh, đáng tin &nbsp;·&nbsp; ✗ Ngại thay đổi</p>
+        </div>
+        <div class="temp-card" style="background:#6B4C6E;">
+          <div class="temp-tag">Yếu</div>
+          <h4>Ưu tư</h4>
+          <div class="temp-en">Melancholic</div>
+          <p>Nhạy cảm sâu sắc, dễ xúc động, sức chịu đựng kém.</p>
+          <p>✓ Tinh tế, chu đáo &nbsp;·&nbsp; ✗ Dễ bi quan, nhút nhát</p>
+        </div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Loại khí chất</th><th>Kiểu thần kinh</th><th>Đặc điểm nổi bật</th><th>Ưu điểm</th><th>Hạn chế</th></tr>
+        <tr><td><b>Hăng hái</b><br><i>Sanguine</i></td><td>Mạnh – cân bằng – linh hoạt</td><td>Vui vẻ, hoạt bát, dễ thích nghi, cảm xúc đến nhanh đi nhanh</td><td>Năng động, hoà đồng, thích nghi tốt</td><td>Thiếu kiên trì, dễ hời hợt, hay đổi ý</td></tr>
+        <tr><td><b>Nóng nảy</b><br><i>Choleric</i></td><td>Mạnh – không cân bằng</td><td>Phản ứng mạnh, nhanh, dứt khoát nhưng dễ bốc đồng</td><td>Quyết đoán, nhiệt huyết, dám hành động</td><td>Nóng vội, dễ xung đột, mất kiểm soát cảm xúc</td></tr>
+        <tr><td><b>Bình thản</b><br><i>Phlegmatic</i></td><td>Mạnh – cân bằng – không linh hoạt</td><td>Chậm rãi, ít bộc lộ cảm xúc, kiên trì, ổn định</td><td>Điềm tĩnh, đáng tin cậy, kiên nhẫn</td><td>Chậm thích nghi, thiếu linh hoạt, ngại thay đổi</td></tr>
+        <tr><td><b>Ưu tư</b><br><i>Melancholic</i></td><td>Yếu</td><td>Nhạy cảm sâu sắc, dễ xúc động, phản ứng chậm, sức chịu đựng kém</td><td>Tinh tế, sâu sắc, chu đáo, giàu cảm xúc</td><td>Nhút nhát, dễ bi quan, sức chịu đựng áp lực thấp</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D — nhận diện khí chất học viên</span><p>Học viên khí chất Hăng hái sẽ hào hứng với hoạt động nhóm sôi nổi nhưng dễ mất tập trung; khí chất Bình thản cần thời gian "khởi động" trước khi tham gia, không nên ép phát biểu ngay; khí chất Ưu tư cần môi trường an toàn, ít bị chỉ trích trước đám đông để dám thể hiện.</p></div>
+
+      <h4 class="sub-title">Bảng phân biệt Khí chất và Tính cách</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Tiêu chí</th><th>Khí chất</th><th>Tính cách</th></tr>
+        <tr><td>Nguồn gốc</td><td>Chủ yếu bẩm sinh, gắn với kiểu thần kinh</td><td>Hình thành chủ yếu qua giáo dục, môi trường sống</td></tr>
+        <tr><td>Nội dung phản ánh</td><td>Cường độ, tốc độ, nhịp độ hành vi ("phong cách")</td><td>Thái độ đối với hiện thực ("nội dung" đạo đức, giá trị)</td></tr>
+        <tr><td>Tính ổn định</td><td>Rất bền vững, khó thay đổi</td><td>Có thể thay đổi, rèn luyện được</td></tr>
+        <tr><td>Đánh giá tốt/xấu</td><td>Không có khí chất nào tốt/xấu tuyệt đối</td><td>Có thể đánh giá tốt/xấu rõ ràng (trung thực > gian dối)</td></tr>
+        <tr><td>Ví dụ</td><td>Người nóng nảy (phản ứng nhanh, mạnh)</td><td>Người nóng nảy đó có thể trung thực, tốt bụng hoặc ích kỷ, tuỳ giáo dục</td></tr>
+      </table></div>
+
+      <h3 class="section-title">4.5 · Năng lực (Ability / Competence)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Năng lực là tổ hợp các thuộc tính tâm lý của cá nhân phù hợp với yêu cầu của một hoạt động nhất định, đảm bảo cho hoạt động đó đạt kết quả.</p></div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Mức độ</th><th>Đặc điểm</th></tr>
+        <tr><td><b>Năng lực</b> <i>(Ability)</i></td><td>Hoàn thành tốt một hoạt động nhất định</td></tr>
+        <tr><td><b>Tài năng</b> <i>(Talent)</i></td><td>Mức độ năng lực cao, tạo ra sản phẩm có giá trị, độc đáo, hiếm gặp</td></tr>
+        <tr><td><b>Thiên tài</b> <i>(Genius)</i></td><td>Mức độ năng lực cao nhất, tạo ra thành tựu có giá trị kiệt xuất, mang tính thời đại</td></tr>
+      </table></div>
+      <p><b>Phân biệt Năng lực và Tri thức/Kỹ năng/Kỹ xảo:</b> Năng lực không đồng nhất với tri thức, kỹ năng, kỹ xảo đơn lẻ, mà là sự vận dụng tổng hợp các yếu tố đó vào giải quyết hiệu quả một loại hoạt động cụ thể — ví dụ, một người có thể thuộc lòng lý thuyết sư phạm (tri thức) nhưng chưa chắc có năng lực đứng lớp tốt nếu thiếu khả năng tổng hợp, ứng biến thực tế.</p>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 4</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch4"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 5 ================= -->
+    <section class="chapter" id="ch5" style="--chapter-color:#3E6B3A; --chapter-color-soft:#E4EDE3;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 5</div>
+        <h2>Các lĩnh vực nhánh &amp; mối quan hệ giữa các trường phái tâm lý học hiện đại</h2>
+        <div class="sub">Các trường phái/lĩnh vực KHÔNG loại trừ nhau — chúng là nhiều lát cắt của cùng một con người</div>
+      </div>
+
+      <h3 class="section-title">5.1 · Các lĩnh vực nhánh chính</h3>
+      <div class="tbl-wrap"><table>
+        <tr><th>Lĩnh vực</th><th>Đối tượng nghiên cứu chính</th><th>Ứng dụng tiêu biểu</th></tr>
+        <tr><td><b>Nhận thức</b></td><td>Quá trình xử lý thông tin: tư duy, trí nhớ, ngôn ngữ, giải quyết vấn đề, chú ý</td><td>Thiết kế bài giảng, cải thiện trí nhớ, giảm tải nhận thức khi học</td></tr>
+        <tr><td><b>Xã hội</b></td><td>Ảnh hưởng qua lại giữa cá nhân với nhóm, xã hội (tuân thủ, định kiến, ảnh hưởng đám đông)</td><td>Xây dựng văn hoá tổ chức, quản lý nhóm, marketing, truyền thông nội bộ</td></tr>
+        <tr><td><b>Lâm sàng</b></td><td>Chẩn đoán, đánh giá và trị liệu các rối loạn tâm lý, sức khoẻ tâm thần</td><td>Tham vấn, trị liệu tâm lý cho cá nhân gặp khó khăn tâm lý</td></tr>
+        <tr><td><b>Phát triển</b></td><td>Sự thay đổi tâm lý qua các giai đoạn đời người</td><td>Giáo dục theo lứa tuổi, thiết kế chương trình phù hợp độ tuổi học viên</td></tr>
+        <tr><td><b>Tổ chức – nhân sự</b> <i>(I/O)</i></td><td>Hành vi con người trong môi trường làm việc: động lực, tuyển dụng, lãnh đạo</td><td>Đánh giá năng lực, thiết kế lộ trình phát triển nhân sự, văn hoá doanh nghiệp</td></tr>
+        <tr><td><b>Giáo dục</b></td><td>Quá trình dạy – học, động cơ học tập, phương pháp sư phạm</td><td>Thiết kế chương trình đào tạo, phương pháp giảng dạy người lớn (andragogy)</td></tr>
+        <tr><td><b>Sinh lý – thần kinh</b></td><td>Cơ sở sinh học, thần kinh của hành vi và tâm lý</td><td>Hiểu cơ chế stress, giấc ngủ, sự tập trung ảnh hưởng đến học tập</td></tr>
+      </table></div>
+
+      <h3 class="section-title">5.2 · Mối quan hệ giữa các trường phái/lĩnh vực</h3>
+      <p>Không có trường phái/lĩnh vực nào giải thích được toàn bộ con người một mình — chúng có xu hướng bổ sung (complementary), không loại trừ (mutually exclusive):</p>
+      <ul class="tidy">
+        <li><b>Bổ sung theo cấp độ phân tích:</b> Sinh lý – thần kinh giải thích "cơ chế bên trong cơ thể", Nhận thức giải thích "quá trình xử lý thông tin", Xã hội giải thích "ảnh hưởng từ môi trường xung quanh" — cùng một hành vi có thể được nhìn từ cả 3 góc độ cùng lúc.</li>
+        <li><b>Bổ sung theo mục đích ứng dụng:</b> một nhà tâm lý tổ chức có thể vận dụng cả nguyên lý hành vi (củng cố, khen thưởng) lẫn nguyên lý nhân văn (tạo môi trường tôn trọng) trong cùng một chương trình đào tạo.</li>
+        <li><b>Phát triển tiếp nối theo lịch sử:</b> Tâm lý học nhận thức ra đời một phần như phản ứng lại giới hạn của Tâm lý học hành vi; nhiều lĩnh vực ứng dụng hiện đại kế thừa đồng thời cả tư tưởng hành vi, nhận thức và nhân văn.</li>
+      </ul>
+      <div class="callout app"><span class="label">Ví dụ tổng hợp — nhìn một hiện tượng qua nhiều lăng kính</span><p>Một nhân viên bảo hiểm liên tục trễ deadline báo cáo: (1) Góc nhìn Hành vi — thiếu củng cố tích cực khi hoàn thành đúng hạn; (2) Góc nhìn Nhận thức — đánh giá sai mức độ ưu tiên, quản lý thời gian kém; (3) Góc nhìn Nhân văn — thiếu động lực nội tại, chưa thấy ý nghĩa công việc; (4) Góc nhìn Xã hội — áp lực nhóm, văn hoá trễ hạn phổ biến trong team. Người làm L&D giỏi thường cần phối hợp nhiều góc nhìn thay vì chỉ dùng một trường phái duy nhất.</p></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 5</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch5"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 6 ================= -->
+    <section class="chapter" id="ch6" style="--chapter-color:#2E5A8C; --chapter-color-soft:#DDE7F1;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 6 · Bổ sung theo Kalat — "Biological Psychology"</div>
+        <h2>Tâm lý học sinh học</h2>
+        <div class="sub">Cơ sở sinh học của tâm lý: nơ-ron, hệ thần kinh, não bộ và hệ nội tiết</div>
+      </div>
+
+      <h3 class="section-title">6.1 · Nơ-ron (Neuron) và xináp (Synapse)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Nơ-ron là đơn vị cấu tạo và chức năng cơ bản của hệ thần kinh, có nhiệm vụ tiếp nhận, xử lý và truyền tín hiệu điện – hoá học đi khắp cơ thể.</p></div>
+      <ul class="tidy">
+        <li><b>Sợi nhánh (Dendrites):</b> nhánh ngắn, nhận tín hiệu từ nơ-ron khác.</li>
+        <li><b>Thân nơ-ron (Soma/Cell body):</b> chứa nhân, xử lý tín hiệu.</li>
+        <li><b>Sợi trục (Axon):</b> sợi dài, truyền xung thần kinh đi xa; được bọc bởi <b>bao myelin</b> giúp dẫn truyền nhanh hơn (myelin bị tổn thương gây các bệnh như đa xơ cứng).</li>
+        <li><b>Cúc tận cùng (Axon terminal):</b> tiết ra <b>chất dẫn truyền thần kinh</b> (neurotransmitter) vào khe xináp.</li>
+      </ul>
+
+      <div class="diagram-card">
+        <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Be Vietnam Pro',sans-serif;">
+          <!-- dendrites -->
+          <g stroke="#2E5A8C" stroke-width="2.5" fill="none">
+            <path d="M60 60 L100 100"/><path d="M55 85 L100 105"/><path d="M60 130 L100 110"/><path d="M50 105 L100 100"/>
+          </g>
+          <circle cx="100" cy="105" r="3" fill="#2E5A8C"/>
+          <!-- soma -->
+          <ellipse cx="150" cy="105" rx="42" ry="34" fill="#DDE7F1" stroke="#2E5A8C" stroke-width="2.5"/>
+          <circle cx="150" cy="105" r="10" fill="#2E5A8C"/>
+          <!-- axon with myelin -->
+          <line x1="192" y1="105" x2="520" y2="105" stroke="#2E5A8C" stroke-width="3"/>
+          <g fill="#B7CFE0" stroke="#2E5A8C" stroke-width="1.5">
+            <rect x="215" y="96" width="55" height="18" rx="9"/>
+            <rect x="290" y="96" width="55" height="18" rx="9"/>
+            <rect x="365" y="96" width="55" height="18" rx="9"/>
+            <rect x="440" y="96" width="55" height="18" rx="9"/>
+          </g>
+          <!-- axon terminals -->
+          <path d="M520 105 L560 75 M520 105 L565 105 M520 105 L560 135" stroke="#2E5A8C" stroke-width="2.5" fill="none"/>
+          <circle cx="560" cy="75" r="4" fill="#A34A7A"/><circle cx="565" cy="105" r="4" fill="#A34A7A"/><circle cx="560" cy="135" r="4" fill="#A34A7A"/>
+          <!-- synapse gap + next neuron dendrite -->
+          <line x1="585" y1="105" x2="585" y2="105" stroke="none"/>
+          <circle cx="596" cy="90" r="2.3" fill="#A34A7A"/><circle cx="602" cy="100" r="2.3" fill="#A34A7A"/><circle cx="596" cy="112" r="2.3" fill="#A34A7A"/><circle cx="600" cy="122" r="2.3" fill="#A34A7A"/>
+          <path d="M615 60 L660 100 M612 130 L660 108" stroke="#8C6A2E" stroke-width="2.5" fill="none"/>
+          <!-- labels -->
+          <text x="75" y="45" font-size="12" fill="#2E5A8C" font-weight="600">Sợi nhánh</text>
+          <text x="118" y="160" font-size="12" fill="#2E5A8C" font-weight="600">Thân nơ-ron</text>
+          <text x="240" y="88" font-size="11.5" fill="#2E5A8C" font-weight="600">Bao myelin</text>
+          <text x="330" y="130" font-size="12" fill="#2E5A8C" font-weight="600">Sợi trục (Axon)</text>
+          <text x="520" y="58" font-size="11.5" fill="#A34A7A" font-weight="600">Cúc tận cùng</text>
+          <text x="565" y="165" font-size="11.5" fill="#A34A7A" font-weight="600">Khe xináp</text>
+          <text x="625" y="50" font-size="11.5" fill="#8C6A2E" font-weight="600">Nơ-ron kế tiếp</text>
+        </svg>
+        <div class="diagram-caption">Tín hiệu đi từ sợi nhánh → thân nơ-ron → sợi trục (được myelin bọc để dẫn nhanh hơn) → cúc tận cùng, sau đó truyền qua khe xináp bằng chất dẫn truyền thần kinh để đến nơ-ron kế tiếp.</div>
+      </div>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Xináp (Synapse) là khe hở nhỏ giữa cúc tận cùng của nơ-ron này và sợi nhánh của nơ-ron kế tiếp — nơi tín hiệu được truyền qua trung gian hoá học thay vì tiếp xúc trực tiếp.</p></div>
+      <h4 class="sub-title">Một số chất dẫn truyền thần kinh quan trọng</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Chất dẫn truyền</th><th>Vai trò chính</th><th>Liên hệ</th></tr>
+        <tr><td><b>Dopamine</b></td><td>Cảm giác tưởng thưởng, động lực, vận động</td><td>Thiếu hụt liên quan Parkinson; dư thừa/rối loạn liên quan tâm thần phân liệt</td></tr>
+        <tr><td><b>Serotonin</b></td><td>Điều hoà tâm trạng, giấc ngủ, cảm giác no</td><td>Thiếu hụt liên quan trầm cảm; nhiều thuốc chống trầm cảm (SSRI) tác động lên chất này</td></tr>
+        <tr><td><b>Acetylcholine</b></td><td>Trí nhớ, co cơ</td><td>Suy giảm liên quan bệnh Alzheimer</td></tr>
+        <tr><td><b>GABA</b></td><td>Chất ức chế chính của não, giảm hưng phấn thần kinh</td><td>Liên quan đến lo âu; nhiều thuốc an thần tác động lên GABA</td></tr>
+        <tr><td><b>Norepinephrine</b></td><td>Sự tỉnh táo, phản ứng "chiến hay chạy"</td><td>Liên quan đến stress cấp tính, sự chú ý</td></tr>
+      </table></div>
+
+      <h3 class="section-title">6.2 · Hệ thần kinh (Nervous System)</h3>
+      <div class="tbl-wrap"><table>
+        <tr><th>Hệ</th><th>Thành phần</th><th>Chức năng</th></tr>
+        <tr><td rowspan="1"><b>Hệ thần kinh trung ương</b><br><i>(Central Nervous System)</i></td><td>Não bộ + Tuỷ sống</td><td>Trung tâm xử lý và điều khiển toàn bộ hoạt động</td></tr>
+        <tr><td rowspan="2"><b>Hệ thần kinh ngoại biên</b><br><i>(Peripheral Nervous System)</i></td><td>Hệ thần kinh soma (somatic)</td><td>Điều khiển vận động có ý thức (cơ xương), truyền cảm giác</td></tr>
+        <tr><td>Hệ thần kinh tự chủ (autonomic): <br>• Giao cảm (sympathetic)<br>• Đối giao cảm (parasympathetic)</td><td>Điều khiển hoạt động không tuỳ ý (tim, tiêu hoá...): giao cảm kích hoạt "chiến hay chạy", đối giao cảm giúp "nghỉ ngơi và tiêu hoá"</td></tr>
+      </table></div>
+
+      <h3 class="section-title">6.3 · Não bộ và các thuỳ não</h3>
+      <p style="font-size:13.5px; color:var(--muted);">Bấm vào từng vùng trên hình hoặc vào chú thích màu bên dưới để xem chức năng.</p>
+      <div class="diagram-card">
+        <div class="brainmap-wrap">
+          <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+            <!-- simplified side-profile brain outline divided into 4 regions -->
+            <path class="brain-region" data-region="frontal" d="M40 150 C40 90 90 45 150 45 C165 45 175 55 175 75 L175 150 L40 150 Z" fill="#2E5A8C"/>
+            <path class="brain-region" data-region="parietal" d="M175 45 C215 45 250 65 265 100 L265 150 L175 150 L175 75 Z" fill="#6B4C6E"/>
+            <path class="brain-region" data-region="temporal" d="M90 150 L230 150 L225 195 C190 210 130 210 100 195 Z" fill="#0F6B72"/>
+            <path class="brain-region" data-region="occipital" d="M230 100 C265 100 290 120 295 150 L265 150 L230 150 Z" fill="#8C6A2E"/>
+            <!-- brainstem -->
+            <path d="M175 195 C175 210 185 225 195 235 L215 235 C210 220 205 205 205 195 Z" fill="#B7791F" opacity=".55"/>
+            <text x="120" y="100" font-size="13" fill="#fff" font-weight="700">Trán</text>
+            <text x="205" y="90" font-size="13" fill="#fff" font-weight="700">Đỉnh</text>
+            <text x="130" y="180" font-size="13" fill="#fff" font-weight="700">Thái dương</text>
+            <text x="245" y="130" font-size="12" fill="#fff" font-weight="700">Chẩm</text>
+          </svg>
+          <div>
+            <div class="brain-info" id="brainInfo">
+              <h4>Thuỳ trán (Frontal lobe)</h4>
+              <p>Tư duy, lập kế hoạch, ra quyết định, kiểm soát vận động, nhân cách. Chứa vùng Broca — điều khiển khả năng nói.</p>
+            </div>
+            <div class="brain-legend">
+              <span data-region="frontal" style="background:#DDE7F1; color:#2E5A8C;">■ Thuỳ trán</span>
+              <span data-region="parietal" style="background:#F0E6EF; color:#6B4C6E;">■ Thuỳ đỉnh</span>
+              <span data-region="temporal" style="background:#DEEEEE; color:#0F6B72;">■ Thuỳ thái dương</span>
+              <span data-region="occipital" style="background:#F1E9DA; color:#8C6A2E;">■ Thuỳ chẩm</span>
+            </div>
+          </div>
+        </div>
+        <div class="diagram-caption">Hình minh hoạ cách điệu (không theo đúng tỷ lệ giải phẫu) — chỉ nhằm giúp định vị tương đối 4 thuỳ não.</div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Vùng não</th><th>Chức năng chính</th></tr>
+        <tr><td><b>Thuỳ trán</b> <i>(Frontal lobe)</i></td><td>Tư duy, lập kế hoạch, ra quyết định, kiểm soát vận động, nhân cách; chứa vùng Broca (điều khiển nói)</td></tr>
+        <tr><td><b>Thuỳ đỉnh</b> <i>(Parietal lobe)</i></td><td>Xử lý cảm giác thân thể (đụng chạm, đau, nhiệt độ), định vị không gian</td></tr>
+        <tr><td><b>Thuỳ thái dương</b> <i>(Temporal lobe)</i></td><td>Xử lý thính giác, trí nhớ; chứa vùng Wernicke (hiểu ngôn ngữ)</td></tr>
+        <tr><td><b>Thuỳ chẩm</b> <i>(Occipital lobe)</i></td><td>Xử lý thị giác</td></tr>
+        <tr><td><b>Hệ viền</b> <i>(Limbic system)</i></td><td>Hạch hạnh nhân (amygdala — sợ hãi, cảm xúc mạnh); Hồi hải mã (hippocampus — hình thành trí nhớ dài hạn); Vùng dưới đồi (hypothalamus — điều hoà đói, khát, nhiệt độ, ham muốn)</td></tr>
+        <tr><td><b>Tiểu não</b> <i>(Cerebellum)</i></td><td>Giữ thăng bằng, phối hợp vận động chính xác</td></tr>
+        <tr><td><b>Thân não</b> <i>(Brainstem)</i></td><td>Điều khiển các chức năng sống cơ bản: nhịp tim, hô hấp</td></tr>
+      </table></div>
+      <div class="callout tip"><span class="label">Mẹo ghi nhớ 4 thuỳ não</span><p>"Trán nghĩ – Đỉnh chạm – Thái dương nghe – Chẩm nhìn": Trán (tư duy) → Đỉnh (xúc giác/không gian) → Thái dương (nghe) → Chẩm (nhìn, ở phía sau đầu — dễ nhớ vì "chẩm" gần gáy, xa mắt nhất nhưng lại xử lý thị giác).</p></div>
+      <p style="font-size:13.5px; color:var(--muted); font-style:italic;">Lưu ý: quan niệm phổ biến "người não trái thiên về logic, người não phải thiên về sáng tạo" là một sự đơn giản hoá quá mức được lan truyền trong văn hoá đại chúng — trên thực tế hai bán cầu não hợp tác chặt chẽ với nhau trong hầu hết các hoạt động tâm lý.</p>
+
+      <h3 class="section-title">6.4 · Hệ nội tiết (Endocrine System)</h3>
+      <p>Hệ nội tiết gồm các tuyến tiết hormone vào máu, tác động chậm hơn nhưng kéo dài hơn hệ thần kinh. Tuyến quan trọng nhất là <b>tuyến yên (pituitary gland)</b> — được ví như "nhạc trưởng", điều khiển các tuyến nội tiết khác. <b>Tuyến thượng thận (adrenal gland)</b> tiết cortisol và adrenaline khi stress, liên quan trực tiếp đến phản ứng "chiến hay chạy" đã học ở Chương 3.</p>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 6</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch6"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 7 ================= -->
+    <section class="chapter" id="ch7" style="--chapter-color:#A34A7A; --chapter-color-soft:#F3E3EC;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 7 · Bổ sung theo Kalat — "Learning"</div>
+        <h2>Tiến trình học tập</h2>
+        <div class="sub">Điều kiện hoá cổ điển, điều kiện hoá thao tác và học tập qua quan sát</div>
+      </div>
+
+      <h3 class="section-title">7.1 · Điều kiện hoá cổ điển (Classical Conditioning) — Pavlov</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Điều kiện hoá cổ điển là quá trình học tập trong đó một kích thích trung tính, khi được ghép cặp lặp lại với một kích thích vốn tự nhiên gây ra phản ứng, dần dần cũng gây ra phản ứng tương tự.</p></div>
+      <p><b>Thí nghiệm kinh điển của Pavlov:</b> chó vốn tiết nước bọt tự nhiên khi thấy thức ăn (không cần học). Pavlov rung chuông mỗi lần cho chó ăn, lặp lại nhiều lần — sau đó chỉ cần rung chuông (không có thức ăn), chó vẫn tiết nước bọt.</p>
+
+      <div class="diagram-card">
+        <div class="flow-label">Trước huấn luyện</div>
+        <div class="flow-row">
+          <div class="flow-box ucs">🍖 Thức ăn (UCS)</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box resp">💧 Tiết nước bọt (UCR)</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box" style="border-color:#B0AA96; color:#6B6558;">🔔 Tiếng chuông (trung tính)</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box" style="border-color:#B0AA96; color:#6B6558;">— Không phản ứng</div>
+        </div>
+        <div class="flow-label" style="margin-top:18px;">Trong huấn luyện (lặp lại nhiều lần)</div>
+        <div class="flow-row">
+          <div class="flow-box cs">🔔 Tiếng chuông</div>
+          <span class="flow-plus">+</span>
+          <div class="flow-box ucs">🍖 Thức ăn (UCS)</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box resp">💧 Tiết nước bọt (UCR)</div>
+        </div>
+        <div class="flow-label" style="margin-top:18px;">Sau huấn luyện</div>
+        <div class="flow-row">
+          <div class="flow-box cs">🔔 Tiếng chuông (CS)</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box resp">💧 Tiết nước bọt (CR)</div>
+        </div>
+        <div class="diagram-caption">Tiếng chuông vốn trung tính, sau khi được ghép cặp lặp lại với thức ăn (UCS), trở thành kích thích có điều kiện (CS) — một mình nó cũng đủ gây ra phản ứng tiết nước bọt (CR).</div>
+      </div>
+
+      <div class="tbl-wrap"><table>
+        <tr><th>Thuật ngữ</th><th>Viết tắt</th><th>Trong thí nghiệm Pavlov</th></tr>
+        <tr><td>Kích thích không điều kiện <i>(Unconditioned Stimulus)</i></td><td>UCS</td><td>Thức ăn — tự nhiên gây phản ứng, không cần học</td></tr>
+        <tr><td>Phản ứng không điều kiện <i>(Unconditioned Response)</i></td><td>UCR</td><td>Tiết nước bọt khi thấy thức ăn — phản xạ tự nhiên</td></tr>
+        <tr><td>Kích thích có điều kiện <i>(Conditioned Stimulus)</i></td><td>CS</td><td>Tiếng chuông — vốn trung tính, sau khi ghép cặp trở thành có ý nghĩa</td></tr>
+        <tr><td>Phản ứng có điều kiện <i>(Conditioned Response)</i></td><td>CR</td><td>Tiết nước bọt khi chỉ nghe tiếng chuông (đã học được)</td></tr>
+      </table></div>
+      <h4 class="sub-title">Các hiện tượng đi kèm</h4>
+      <ul class="tidy">
+        <li><b>Lan toả kích thích (Generalization):</b> phản ứng tương tự cũng xảy ra với các kích thích gần giống CS (VD: sợ mọi tiếng chuông tương tự).</li>
+        <li><b>Phân biệt kích thích (Discrimination):</b> chỉ phản ứng với đúng CS ban đầu, phân biệt được với kích thích khác.</li>
+        <li><b>Dập tắt (Extinction):</b> CR yếu dần rồi biến mất nếu CS liên tục xuất hiện mà không đi kèm UCS.</li>
+        <li><b>Phục hồi tự phát (Spontaneous recovery):</b> sau một thời gian nghỉ, CR đã bị dập tắt có thể xuất hiện trở lại (yếu hơn) khi gặp lại CS.</li>
+      </ul>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Điều kiện hoá cổ điển giải thích vì sao học viên có thể hình thành cảm giác lo sợ/né tránh với một môn học hoặc kỳ thi (CS) nếu nó từng đi kèm trải nghiệm tiêu cực (UCS) — đây cũng là cơ sở của các liệu pháp giải mẫn cảm trong trị liệu tâm lý.</p></div>
+
+      <h3 class="section-title">7.2 · Điều kiện hoá thao tác (Operant Conditioning) — Skinner</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Điều kiện hoá thao tác là quá trình học tập trong đó hành vi được tăng cường hoặc giảm bớt tuỳ theo hệ quả (consequence) xảy ra ngay sau hành vi đó.</p></div>
+      <p><b>Lưu ý quan trọng về thuật ngữ:</b> trong điều kiện hoá thao tác, "dương/âm" (+/–) KHÔNG có nghĩa là tốt/xấu — <b>dương (+)</b> nghĩa là THÊM VÀO một yếu tố, <b>âm (–)</b> nghĩa là LẤY ĐI một yếu tố. "Củng cố" luôn làm TĂNG hành vi, "trừng phạt" luôn làm GIẢM hành vi.</p>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>Thêm vào (+)</th><th>Lấy đi (–)</th></tr>
+        <tr><td><b>Tăng hành vi</b><br>(Củng cố / Reinforcement)</td><td><b>Củng cố dương:</b> thêm một yếu tố dễ chịu để tăng hành vi (VD: khen thưởng học viên phát biểu đúng)</td><td><b>Củng cố âm:</b> lấy đi một yếu tố khó chịu để tăng hành vi (VD: tắt tiếng chuông báo lỗi khi nhân viên hoàn thành báo cáo đúng hạn)</td></tr>
+        <tr><td><b>Giảm hành vi</b><br>(Trừng phạt / Punishment)</td><td><b>Trừng phạt dương:</b> thêm một yếu tố khó chịu để giảm hành vi (VD: nhắc nhở trước lớp khi đi trễ)</td><td><b>Trừng phạt âm:</b> lấy đi một yếu tố dễ chịu để giảm hành vi (VD: cắt giờ nghỉ giải lao vì ồn ào)</td></tr>
+      </table></div>
+      <h4 class="sub-title">Các lịch trình củng cố (Schedules of reinforcement)</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Lịch trình</th><th>Cách hoạt động</th><th>Ví dụ</th><th>Đặc điểm phản ứng</th></tr>
+        <tr><td><b>Tỉ lệ cố định</b> <i>(Fixed Ratio)</i></td><td>Củng cố sau một số lần phản ứng cố định</td><td>Thưởng sau mỗi 10 sản phẩm hoàn thành</td><td>Phản ứng nhanh, có khoảng nghỉ ngắn ngay sau khi nhận thưởng</td></tr>
+        <tr><td><b>Tỉ lệ biến đổi</b> <i>(Variable Ratio)</i></td><td>Củng cố sau một số lần phản ứng không cố định, trung bình quanh một con số</td><td>Máy đánh bạc, cơ chế "lượt quay may mắn"</td><td>Phản ứng đều đặn, rất bền, khó dập tắt nhất — dễ gây "nghiện"</td></tr>
+        <tr><td><b>Khoảng cố định</b> <i>(Fixed Interval)</i></td><td>Củng cố cho phản ứng đầu tiên sau một khoảng thời gian cố định</td><td>Lương trả theo tháng</td><td>Phản ứng tăng dần gần cuối chu kỳ, ít vào đầu chu kỳ</td></tr>
+        <tr><td><b>Khoảng biến đổi</b> <i>(Variable Interval)</i></td><td>Củng cố cho phản ứng đầu tiên sau một khoảng thời gian không cố định</td><td>Kiểm tra đột xuất</td><td>Phản ứng đều đặn, ổn định hơn khoảng cố định</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Cơ chế "tỉ lệ biến đổi" giải thích vì sao các trò chơi hoá học tập (gamification) có phần thưởng ngẫu nhiên (huy hiệu bất ngờ, điểm thưởng không báo trước) thường tạo động lực tham gia bền hơn so với phần thưởng cố định, dễ đoán.</p></div>
+
+      <h3 class="section-title">7.3 · Học tập qua quan sát (Observational Learning) — Bandura</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Học tập qua quan sát là quá trình con người học được hành vi mới bằng cách quan sát và bắt chước hành vi của người khác (mô hình), mà không cần tự mình trải nghiệm hệ quả trực tiếp.</p></div>
+      <p><b>Thí nghiệm búp bê Bobo (Bobo doll):</b> trẻ em quan sát người lớn đánh đập một búp bê bơm hơi rồi được khen thưởng/không bị phạt, sau đó có xu hướng bắt chước hành vi hung hăng đó khi được chơi với búp bê tương tự.</p>
+      <ul class="tidy">
+        <li><b>1. Chú ý (Attention):</b> quan sát và tập trung vào hành vi của mô hình.</li>
+        <li><b>2. Ghi nhớ (Retention):</b> lưu giữ hình ảnh hành vi đã quan sát.</li>
+        <li><b>3. Tái tạo vận động (Reproduction):</b> có khả năng thực hiện lại hành vi đó.</li>
+        <li><b>4. Động cơ/Củng cố (Motivation):</b> có lý do/động lực để thực sự thực hiện hành vi (VD: thấy mô hình được khen thưởng).</li>
+      </ul>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Đây chính là cơ sở khoa học của phương pháp "làm mẫu" (modeling) trong đào tạo kỹ năng bán hàng/tư vấn — để nhân viên mới học nhanh, TVV giỏi cần trình diễn hành vi mẫu rõ ràng và học viên cần thấy hành vi đó được ghi nhận/khen thưởng.</p></div>
+
+      <h4 class="sub-title">Bảng so sánh Điều kiện hoá cổ điển và Điều kiện hoá thao tác</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Tiêu chí</th><th>Cổ điển (Pavlov)</th><th>Thao tác (Skinner)</th></tr>
+        <tr><td>Đối tượng học được liên kết</td><td>Giữa 2 kích thích (CS – UCS)</td><td>Giữa hành vi và hệ quả của nó</td></tr>
+        <tr><td>Vai trò của chủ thể</td><td>Thụ động — phản xạ tự động xảy ra</td><td>Chủ động — chủ thể thực hiện hành vi để tạo ra hệ quả</td></tr>
+        <tr><td>Hành vi liên quan</td><td>Phản xạ không tuỳ ý (tiết nước bọt, giật mình...)</td><td>Hành vi có chủ đích, tuỳ ý (nhấn nút, phát biểu, làm bài...)</td></tr>
+      </table></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 7</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch7"></div>
+      </div>
+    </section>
+
+    <!-- ================= CHƯƠNG 8 ================= -->
+    <section class="chapter" id="ch8" style="--chapter-color:#8C6A2E; --chapter-color-soft:#F1E9DA;">
+      <div class="chapter-head">
+        <div class="chapter-num">Chương 8 · Bổ sung theo Kalat — "Intelligence", "Consciousness", "Development"</div>
+        <h2>Trí thông minh, Ngôn ngữ, Ý thức &amp; Phát triển</h2>
+        <div class="sub">Cách đo trí tuệ, các mốc ngôn ngữ, các trạng thái ý thức và các giai đoạn phát triển tâm lý người</div>
+      </div>
+
+      <h3 class="section-title">8.1 · Trí thông minh (Intelligence)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Trí thông minh là năng lực chung cho phép cá nhân hiểu những ý tưởng phức tạp, thích nghi hiệu quả với môi trường, học hỏi từ kinh nghiệm và vượt qua các trở ngại bằng tư duy.</p></div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Thuyết</th><th>Tác giả</th><th>Nội dung cốt lõi</th></tr>
+        <tr><td><b>Nhân tố chung "g"</b></td><td>Charles Spearman</td><td>Tồn tại một năng lực trí tuệ chung (g) làm nền cho mọi khả năng nhận thức cụ thể</td></tr>
+        <tr><td><b>Đa trí tuệ</b> <i>(Multiple Intelligences)</i></td><td>Howard Gardner</td><td>Có nhiều loại trí tuệ độc lập: ngôn ngữ, logic-toán, không gian, âm nhạc, vận động cơ thể, giao tiếp (liên cá nhân), nội tâm, tự nhiên...</td></tr>
+        <tr><td><b>Trí tuệ tam nguyên</b> <i>(Triarchic Theory)</i></td><td>Robert Sternberg</td><td>3 dạng trí tuệ: phân tích (giải toán, logic), sáng tạo (ý tưởng mới), thực tiễn (ứng dụng vào đời sống thực)</td></tr>
+      </table></div>
+      <p><b>Chỉ số IQ (Intelligence Quotient):</b> công thức cổ điển IQ = (Tuổi trí tuệ ÷ Tuổi thực) × 100; các test hiện đại (WAIS, WISC) dùng thang điểm chuẩn hoá so với phân phối chuẩn của nhóm cùng độ tuổi thay vì công thức này.</p>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Thuyết Đa trí tuệ của Gardner rất hữu ích khi thiết kế đào tạo cho người lớn: một TVV có thể yếu về "trí tuệ logic" (khó nhớ công thức tính phí bảo hiểm) nhưng lại mạnh về "trí tuệ giao tiếp" (thuyết phục khách hàng tốt) — nên đa dạng hoá phương pháp giảng dạy thay vì chỉ đánh giá qua một loại bài kiểm tra.</p></div>
+
+      <h3 class="section-title">8.2 · Ngôn ngữ (Language)</h3>
+      <p>Sự phát triển ngôn ngữ ở trẻ đi theo trình tự khá phổ quát: bập bẹ (~6 tháng) → từ đơn có nghĩa (~12 tháng) → câu 2 từ (~18–24 tháng) → câu phức tạp dần theo tuổi.</p>
+      <ul class="tidy">
+        <li><b>Quan điểm bẩm sinh (Noam Chomsky):</b> con người sinh ra đã có sẵn "cơ chế thụ đắc ngôn ngữ" (Language Acquisition Device – LAD) — một năng lực sinh học chuyên biệt giúp trẻ tiếp thu ngữ pháp rất nhanh dù không được dạy trực tiếp.</li>
+        <li><b>Quan điểm học tập (B.F. Skinner):</b> ngôn ngữ được học qua củng cố và bắt chước như mọi hành vi khác (xem lại Chương 7).</li>
+      </ul>
+
+      <h3 class="section-title">8.3 · Ý thức (Consciousness)</h3>
+      <div class="callout def"><span class="label">Định nghĩa</span><p>Ý thức là trạng thái nhận biết được về bản thân và môi trường xung quanh tại một thời điểm nhất định; mức độ ý thức thay đổi liên tục — từ tỉnh táo hoàn toàn đến các trạng thái ngủ, thôi miên, thiền định...</p></div>
+      <h4 class="sub-title">Các giai đoạn của giấc ngủ</h4>
+      <div class="tbl-wrap"><table>
+        <tr><th>Giai đoạn</th><th>Đặc điểm</th></tr>
+        <tr><td><b>NREM giai đoạn 1</b></td><td>Ngủ nông, chuyển tiếp từ tỉnh sang ngủ, dễ thức giấc</td></tr>
+        <tr><td><b>NREM giai đoạn 2</b></td><td>Ngủ sâu hơn, nhịp tim và nhiệt độ cơ thể giảm</td></tr>
+        <tr><td><b>NREM giai đoạn 3</b></td><td>Ngủ sâu nhất (sóng chậm — slow-wave sleep), khó đánh thức, cơ thể phục hồi thể chất</td></tr>
+        <tr><td><b>REM</b> <i>(Rapid Eye Movement)</i></td><td>Mắt chuyển động nhanh, não hoạt động gần như lúc thức, phần lớn các giấc mơ sống động xảy ra ở giai đoạn này</td></tr>
+      </table></div>
+      <p>Một chu kỳ ngủ hoàn chỉnh (NREM 1→2→3→REM) kéo dài khoảng 90 phút và lặp lại nhiều lần trong đêm; tỉ lệ REM tăng dần về cuối giấc ngủ.</p>
+
+      <h3 class="section-title">8.4 · Phát triển tâm lý người (Human Development)</h3>
+      <h4 class="sub-title">4 giai đoạn phát triển nhận thức — Jean Piaget</h4>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-age">0 – 2 tuổi</div><div class="tl-title">Giác động</div><div class="tl-desc">Nhận thức qua giác quan và vận động; hình thành "vật thể tồn tại vĩnh viễn"</div></div>
+        <div class="tl-item"><div class="tl-age">2 – 7 tuổi</div><div class="tl-title">Tiền thao tác</div><div class="tl-desc">Dùng ngôn ngữ, biểu tượng; tư duy duy kỷ, chưa hiểu tính bảo toàn</div></div>
+        <div class="tl-item"><div class="tl-age">7 – 11 tuổi</div><div class="tl-title">Thao tác cụ thể</div><div class="tl-desc">Tư duy logic với sự vật cụ thể; hiểu được tính bảo toàn</div></div>
+        <div class="tl-item"><div class="tl-age">Từ 11 tuổi</div><div class="tl-title">Thao tác hình thức</div><div class="tl-desc">Tư duy trừu tượng, giả định, suy luận logic hệ thống</div></div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Giai đoạn</th><th>Độ tuổi</th><th>Đặc điểm chính</th></tr>
+        <tr><td><b>Giác động</b> <i>(Sensorimotor)</i></td><td>0 – 2 tuổi</td><td>Nhận thức thế giới qua giác quan và vận động; hình thành khái niệm "vật thể tồn tại vĩnh viễn" (object permanence)</td></tr>
+        <tr><td><b>Tiền thao tác</b> <i>(Preoperational)</i></td><td>2 – 7 tuổi</td><td>Bắt đầu dùng ngôn ngữ, biểu tượng; tư duy còn mang tính duy kỷ (egocentrism), chưa hiểu tính bảo toàn (conservation)</td></tr>
+        <tr><td><b>Thao tác cụ thể</b> <i>(Concrete operational)</i></td><td>7 – 11 tuổi</td><td>Tư duy logic với sự vật cụ thể; hiểu được tính bảo toàn (lượng nước không đổi dù đổi hình dạng bình chứa)</td></tr>
+        <tr><td><b>Thao tác hình thức</b> <i>(Formal operational)</i></td><td>Từ 11 tuổi</td><td>Tư duy trừu tượng, giả định, suy luận logic hệ thống như người trưởng thành</td></tr>
+      </table></div>
+      <h4 class="sub-title">8 giai đoạn phát triển tâm lý xã hội — Erik Erikson (tóm lược)</h4>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-age">0–1</div><div class="tl-title">Tin tưởng <i>vs</i> Nghi ngờ</div></div>
+        <div class="tl-item"><div class="tl-age">1–3</div><div class="tl-title">Tự chủ <i>vs</i> Xấu hổ</div></div>
+        <div class="tl-item"><div class="tl-age">3–6</div><div class="tl-title">Chủ động <i>vs</i> Tội lỗi</div></div>
+        <div class="tl-item"><div class="tl-age">6–12</div><div class="tl-title">Cần mẫn <i>vs</i> Tự ti</div></div>
+        <div class="tl-item"><div class="tl-age">12–18</div><div class="tl-title">Bản sắc <i>vs</i> Hỗn loạn</div></div>
+        <div class="tl-item"><div class="tl-age">18–40</div><div class="tl-title">Thân mật <i>vs</i> Cô lập</div></div>
+        <div class="tl-item"><div class="tl-age">40–65</div><div class="tl-title">Cống hiến <i>vs</i> Trì trệ</div></div>
+        <div class="tl-item"><div class="tl-age">65+</div><div class="tl-title">Toàn vẹn <i>vs</i> Tuyệt vọng</div></div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Giai đoạn (độ tuổi)</th><th>Khủng hoảng cần vượt qua</th></tr>
+        <tr><td>Sơ sinh (0–1)</td><td>Tin tưởng cơ bản <i>vs.</i> Nghi ngờ</td></tr>
+        <tr><td>Nhi đồng (1–3)</td><td>Tự chủ <i>vs.</i> Xấu hổ/nghi ngờ</td></tr>
+        <tr><td>Mẫu giáo (3–6)</td><td>Chủ động <i>vs.</i> Mặc cảm tội lỗi</td></tr>
+        <tr><td>Nhi đồng lớn (6–12)</td><td>Cần mẫn <i>vs.</i> Tự ti</td></tr>
+        <tr><td>Thanh thiếu niên (12–18)</td><td>Bản sắc <i>vs.</i> Hỗn loạn vai trò</td></tr>
+        <tr><td>Trưởng thành trẻ (18–40)</td><td>Thân mật <i>vs.</i> Cô lập</td></tr>
+        <tr><td>Trung niên (40–65)</td><td>Cống hiến <i>vs.</i> Trì trệ</td></tr>
+        <tr><td>Cao niên (65+)</td><td>Toàn vẹn cái tôi <i>vs.</i> Tuyệt vọng</td></tr>
+      </table></div>
+      <div class="callout app"><span class="label">Liên hệ L&D</span><p>Học viên trưởng thành thường đang ở giai đoạn "Thân mật vs. Cô lập" hoặc "Cống hiến vs. Trì trệ" của Erikson — nhiều người đi học không chỉ vì kiến thức mà vì nhu cầu cống hiến, khẳng định giá trị bản thân trong sự nghiệp; hiểu điều này giúp thiết kế thông điệp truyền thông khoá học chạm đúng động lực của họ.</p></div>
+
+      <div class="quiz-block">
+        <div class="quiz-title"><h3 class="section-title" style="margin:0; border:none;">Tự kiểm tra — Chương 8</h3><span class="quiz-hint">Bấm vào thẻ để lật xem đáp án</span></div>
+        <div class="qgrid" id="quiz-ch8"></div>
+      </div>
+    </section>
+
+    <!-- ================= ÔN TRỘN (MIXED REVIEW) ================= -->
+    <section class="chapter" id="mixreview" style="--chapter-color:#D97757; --chapter-color-soft:#F7E4D9;">
+      <div class="chapter-head">
+        <div class="chapter-num">Ôn tổng hợp</div>
+        <h2>Ôn trộn 8 chương (Interleaving)</h2>
+        <div class="sub">Trộn ngẫu nhiên câu hỏi từ mọi chương thay vì ôn tuần tự — cách này giúp ghi nhớ bền hơn so với học từng chương một</div>
+      </div>
+      <div class="review-controls">
+        <button class="btn-shuffle" id="shuffleBtn">🔀 Xáo lại</button>
+        <label class="chk-filter"><input type="checkbox" id="reviewOnlyToggle"> Chỉ hiện câu <b>chưa thuộc / cần ôn lại</b></label>
+        <div class="review-stats">
+          <span id="mixCount">0 câu</span>
+        </div>
+      </div>
+      <div class="qgrid" id="mixgrid"></div>
+    </section>
+
+    <!-- ================= CHEAT SHEET ================= -->
+    <section class="chapter" id="cheatsheet">
+      <div class="cheat">
+        <h2>Bảng tổng hợp nhanh</h2>
+        <div class="cheat-sub">Cheat sheet 1 trang — ôn lại trong 15–30 phút trước giờ thi</div>
+        <div class="cheat-grid">
+          <div class="cheat-card">
+            <h4>Chương 1 <span>· Tâm lý học là gì</span></h4>
+            <ul>
+              <li>Tâm lý học: khoa học nghiên cứu hiện tượng tâm lý và quy luật của nó.</li>
+              <li>3 loại hiện tượng theo thời gian: Quá trình (ngắn) → Trạng thái (nền) → Thuộc tính (bền vững).</li>
+              <li>3 bản chất tâm lý người: phản ánh hiện thực khách quan – tính chủ thể – bản chất xã hội-lịch sử.</li>
+              <li>6 phương pháp NC: Quan sát – Thực nghiệm – Đàm thoại – Điều tra – Trắc nghiệm – Phân tích sản phẩm hoạt động.</li>
+              <li>6 trường phái lớn: Hành vi – Phân tâm học – Gestalt – Nhận thức – Nhân văn – Sinh lý-thần kinh.</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 2 <span>· Quá trình nhận thức</span></h4>
+            <ul>
+              <li>Cảm giác: phản ánh TỪNG thuộc tính riêng lẻ. Tri giác: phản ánh TRỌN VẸN, tổng hợp.</li>
+              <li>Chú ý: không chủ định (tự nhiên) / có chủ định (nỗ lực) / sau chủ định (hứng thú).</li>
+              <li>Trí nhớ: Ghi nhớ → Gìn giữ → Tái hiện → Quên. 3 loại: cảm giác (&lt;1s) / ngắn hạn (~7±2) / dài hạn.</li>
+              <li>Tư duy: phản ánh bản chất, quy luật; nảy sinh khi có "tình huống có vấn đề".</li>
+              <li>Tưởng tượng: tạo hình ảnh MỚI chưa có trong kinh nghiệm, dựa trên biểu tượng cũ.</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 3 <span>· Xúc cảm, ý chí</span></h4>
+            <ul>
+              <li>Xúc cảm: quá trình, nhất thời, cả người &amp; động vật có. Tình cảm: thuộc tính, bền vững, chỉ người có.</li>
+              <li>6 quy luật tình cảm: Lây lan – Thích ứng – Tương phản – Di chuyển – Pha trộn – Hình thành từ xúc cảm.</li>
+              <li>Ý chí: 5 phẩm chất — mục đích, độc lập, quyết đoán, kiên trì, tự chủ.</li>
+              <li>5 bước hành động ý chí: mục đích → kế hoạch → quyết định → thực hiện → đánh giá.</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 4 <span>· Thuộc tính cá nhân</span></h4>
+            <ul>
+              <li>Nhân cách = Xu hướng + Tính cách + Khí chất + Năng lực.</li>
+              <li>Maslow 5 bậc: Sinh lý → An toàn → Xã hội → Tôn trọng → Tự hoàn thiện.</li>
+              <li>Nhu cầu (đòi hỏi cần thoả mãn) khác Động cơ (lực thúc đẩy hành động cụ thể).</li>
+              <li>Tính cách = hệ thống THÁI ĐỘ + hành vi, do giáo dục, có thể thay đổi.</li>
+              <li>Khí chất = "phong cách" bẩm sinh, 4 loại: Hăng hái – Nóng nảy – Bình thản – Ưu tư.</li>
+              <li>Năng lực → Tài năng → Thiên tài (3 mức độ tăng dần).</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 5 <span>· Trường phái hiện đại</span></h4>
+            <ul>
+              <li>Lĩnh vực nhánh: Nhận thức – Xã hội – Lâm sàng – Phát triển – Tổ chức/nhân sự – Giáo dục – Sinh lý-thần kinh.</li>
+              <li>Nguyên tắc vàng: các trường phái/lĩnh vực BỔ SUNG cho nhau, không loại trừ nhau.</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 6 <span>· Tâm lý học sinh học</span></h4>
+            <ul>
+              <li>Nơ-ron: sợi nhánh (nhận) → thân → sợi trục (truyền) → cúc tận cùng (tiết chất dẫn truyền) qua khe xináp.</li>
+              <li>Dopamine (thưởng/động lực) – Serotonin (tâm trạng) – Acetylcholine (trí nhớ) – GABA (ức chế) – Norepinephrine (tỉnh táo).</li>
+              <li>4 thuỳ não: Trán (tư duy, vùng Broca-nói) – Đỉnh (xúc giác) – Thái dương (nghe, vùng Wernicke-hiểu) – Chẩm (nhìn).</li>
+              <li>Hệ viền: Hạch hạnh nhân (sợ hãi) – Hồi hải mã (trí nhớ dài hạn) – Vùng dưới đồi (nhu cầu sinh lý).</li>
+              <li>Hệ giao cảm (chiến/chạy) vs đối giao cảm (nghỉ ngơi, tiêu hoá).</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 7 <span>· Tiến trình học tập</span></h4>
+            <ul>
+              <li>Cổ điển (Pavlov): UCS→UCR có sẵn; ghép CS+UCS lặp lại → CS một mình gây CR.</li>
+              <li>Thao tác (Skinner): (+) = thêm vào, (–) = lấy đi; Củng cố = TĂNG hành vi, Trừng phạt = GIẢM hành vi.</li>
+              <li>4 lịch trình củng cố: Tỉ lệ cố định – Tỉ lệ biến đổi (bền nhất) – Khoảng cố định – Khoảng biến đổi.</li>
+              <li>Quan sát (Bandura): Chú ý → Ghi nhớ → Tái tạo vận động → Động cơ/củng cố.</li>
+            </ul>
+          </div>
+          <div class="cheat-card">
+            <h4>Chương 8 <span>· Trí tuệ, Ý thức, Phát triển</span></h4>
+            <ul>
+              <li>Trí tuệ: Spearman ("g" chung) – Gardner (đa trí tuệ) – Sternberg (phân tích/sáng tạo/thực tiễn).</li>
+              <li>Ngôn ngữ: Chomsky (bẩm sinh – LAD) vs Skinner (học qua củng cố).</li>
+              <li>Giấc ngủ: NREM 1→2→3 (ngủ sâu dần) → REM (mơ sống động); 1 chu kỳ ~90 phút.</li>
+              <li>Piaget 4 giai đoạn: Giác động (0-2) – Tiền thao tác (2-7) – Thao tác cụ thể (7-11) – Thao tác hình thức (11+).</li>
+              <li>Erikson 8 giai đoạn tâm lý xã hội, từ "Tin tưởng vs Nghi ngờ" (sơ sinh) đến "Toàn vẹn vs Tuyệt vọng" (cao niên).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cheat-note">Lưu ý: Chương 1–5 theo khung chuẩn môn Tâm lý học đại cương tại Việt Nam; Chương 6–8 bổ sung, đối chiếu theo giáo trình <i>Introduction to Psychology</i> (James W. Kalat). Tài liệu vẫn chưa đối chiếu slide/giáo trình cụ thể của giảng viên bạn — vui lòng đối chiếu định nghĩa, ví dụ, thuật ngữ với bài giảng thực tế trên lớp.</div>
+      </div>
+    </section>
+
+    <footer class="pagefoot">Tài liệu ôn tập · Nhập môn Tâm lý học · 8 chương, câu hỏi tự kiểm tra và bảng tổng hợp · Chương 6–8 đối chiếu theo <i>Introduction to Psychology</i> — James W. Kalat.</footer>
+  </main>
+</div>
+
+<script>
+// ---------------- Quiz data (Q + A merged from Word doc content) ----------------
+const QUIZ = {
+  ch1: [
+    {q:"Hiện tượng nào sau đây là một THUỘC TÍNH tâm lý (không phải quá trình hay trạng thái)? (A) Cảm giác đau khi va vào bàn (B) Sự chú ý khi nghe giảng (C) Tính cách hướng ngoại (D) Tâm trạng vui vẻ sau kỳ nghỉ", a:"<span class='correct'>(C) Tính cách hướng ngoại</span> — vì đây là đặc điểm ổn định, bền vững (thuộc tính), khác với cảm giác/chú ý/tâm trạng là quá trình hoặc trạng thái nhất thời."},
+    {q:"Luận điểm \"cùng một bài giảng nhưng mỗi học viên tiếp thu khác nhau\" minh hoạ rõ nhất đặc điểm bản chất nào của tâm lý người? (A) Phản ánh hiện thực khách quan (B) Tính chủ thể (C) Bản chất xã hội – lịch sử (D) Tính di truyền", a:"<span class='correct'>(B) Tính chủ thể</span> — cùng hiện thực nhưng phản ánh khác nhau do đặc điểm riêng của mỗi người."},
+    {q:"Phương pháp nào cho phép nhà nghiên cứu chủ động tạo tình huống và kiểm soát biến số? (A) Quan sát (B) Thực nghiệm (C) Điều tra (D) Phân tích sản phẩm hoạt động", a:"<span class='correct'>(B) Thực nghiệm</span> — là phương pháp chủ động tạo tình huống, kiểm soát biến số."},
+    {q:"Trường phái nào coi hành vi con người là kết quả của điều kiện hoá kích thích – phản ứng, bỏ qua yếu tố nội tâm? (A) Phân tâm học (B) Nhân văn (C) Hành vi (D) Gestalt", a:"<span class='correct'>(C) Hành vi</span> — trường phái Behaviorism chỉ quan tâm hành vi quan sát được, bỏ qua nội tâm."},
+    {q:"Tự luận: Phân biệt \"quá trình tâm lý\" và \"trạng thái tâm lý\" bằng 1 ví dụ cụ thể trong môi trường làm việc/lớp học của bạn.", a:"Quá trình tâm lý diễn ra ngắn, có mở đầu-kết thúc rõ (VD: một lần chú ý khi nghe giảng). Trạng thái tâm lý kéo dài hơn, làm \"nền\" (VD: tâm trạng chán nản kéo dài cả tuần sau một dự án thất bại)."},
+    {q:"Tự luận: Vì sao nói tâm lý người có bản chất xã hội – lịch sử? Cho 1 ví dụ minh hoạ.", a:"Vì tâm lý người hình thành, phát triển và biểu hiện trong hoạt động và giao tiếp xã hội — không có xã hội thì không phát triển tâm lý người bình thường. Ví dụ kinh điển: các trường hợp trẻ hoang dã (\"trẻ sói\") bị cô lập từ nhỏ không phát triển ngôn ngữ, tư duy như người bình thường."},
+    {q:"Tự luận: Nêu 1 tình huống trong công việc đào tạo mà bạn có thể áp dụng phương pháp \"quan sát\" và 1 tình huống áp dụng \"trắc nghiệm\" để tìm hiểu học viên.", a:"Quan sát: theo dõi thái độ, cử chỉ của học viên trong giờ thực hành để đánh giá mức độ tự tin. Trắc nghiệm: dùng bài test tính cách/DISC đã chuẩn hoá để đánh giá phong cách làm việc của học viên trước khi thiết kế chương trình."},
+  ],
+  ch2: [
+    {q:"Khi bạn chỉ cảm nhận \"vị ngọt\" mà chưa biết đó là loại trái cây gì, đó là biểu hiện của: (A) Tri giác (B) Cảm giác (C) Tư duy (D) Tưởng tượng", a:"<span class='correct'>(B) Cảm giác</span> — chỉ ghi nhận một thuộc tính riêng lẻ (vị ngọt), chưa gộp thành sự vật hoàn chỉnh."},
+    {q:"Loại chú ý nào đòi hỏi nỗ lực ý chí để duy trì? (A) Chú ý không chủ định (B) Chú ý có chủ định (C) Chú ý sau chủ định (D) Cả 3 loại đều không cần nỗ lực", a:"<span class='correct'>(B) Chú ý có chủ định</span> — cần nỗ lực ý chí để duy trì, khác với không chủ định (tự nhiên) và sau chủ định (đã thành hứng thú)."},
+    {q:"Quá trình nào của trí nhớ chịu trách nhiệm \"đưa thông tin mới vào\"? (A) Gìn giữ (B) Ghi nhớ (C) Tái hiện (D) Quên", a:"<span class='correct'>(B) Ghi nhớ (Encoding)</span> — quá trình đưa thông tin mới vào hệ trí nhớ."},
+    {q:"Tư duy chỉ nảy sinh khi con người gặp phải: (A) Kích thích mạnh vào giác quan (B) Tình huống có vấn đề (C) Trạng thái mệt mỏi (D) Ký ức tuổi thơ", a:"<span class='correct'>(B) Tình huống có vấn đề</span> — điều kiện bắt buộc để tư duy nảy sinh."},
+    {q:"Tự luận: Vì sao nói tri giác \"trọn vẹn\" hơn cảm giác? Cho ví dụ trong một buổi tập huấn.", a:"Vì tri giác tổng hợp nhiều cảm giác cùng lúc và gắn với kinh nghiệm đã có để nhận ra sự vật hoàn chỉnh, trong khi cảm giác chỉ ghi nhận từng thuộc tính rời rạc. VD: học viên không chỉ nghe âm lượng giọng nói (cảm giác) mà nhận ra ngay đó là giảng viên quen đang giảng phần khó (tri giác)."},
+    {q:"Tự luận: Giải thích quy luật \"quên\" của trí nhớ và đề xuất 1 cách ứng dụng vào thiết kế bài giảng để học viên nhớ lâu hơn.", a:"Quên là quy luật tự nhiên, xảy ra nhanh nhất ngay sau khi học nếu không ôn tập (đường cong quên lãng Ebbinghaus). Ứng dụng: thiết kế các mốc ôn tập ngắt quãng (spaced repetition) sau buổi học — ôn lại sau 1 ngày, 1 tuần, 1 tháng — thay vì chỉ học một lần rồi thôi."},
+    {q:"Tự luận: Phân biệt tư duy và tưởng tượng bằng ví dụ của chính bạn khi xử lý một vấn đề trong công việc đào tạo.", a:"Tư duy: xuất phát từ tình huống có vấn đề rõ ràng, dùng logic (VD: tính toán ngân sách đào tạo còn thiếu bao nhiêu). Tưởng tượng: tạo hình ảnh/ý tưởng mới, ít ràng buộc logic (VD: hình dung ra một trò chơi đào tạo hoàn toàn mới chưa từng có)."},
+  ],
+  ch3: [
+    {q:"Đặc điểm nào KHÔNG phải của xúc cảm? (A) Diễn ra nhanh, gắn với tình huống cụ thể (B) Chỉ có ở con người (C) Có ở cả động vật bậc cao (D) Là một quá trình tâm lý", a:"<span class='correct'>(B) Chỉ có ở con người</span> — SAI vì đây là đặc điểm của TÌNH CẢM, không phải xúc cảm (xúc cảm có ở cả động vật bậc cao)."},
+    {q:"Hiện tượng \"quen dần, hết thấy xúc động\" trước một lời khen được lặp lại nhiều lần là biểu hiện của quy luật nào? (A) Lây lan (B) Thích ứng (C) Tương phản (D) Di chuyển", a:"<span class='correct'>(B) Thích ứng</span> — tình cảm lặp lại nhiều lần với cường độ không đổi sẽ suy yếu dần."},
+    {q:"\"Giận cá chém thớt\" là biểu hiện rõ nhất của quy luật: (A) Pha trộn (B) Di chuyển (C) Thích ứng (D) Hình thành tình cảm từ xúc cảm", a:"<span class='correct'>(B) Di chuyển</span> — tình cảm \"lây\" từ đối tượng này sang đối tượng khác có liên quan."},
+    {q:"Phẩm chất ý chí thể hiện ở việc \"tự quyết định, không a dua theo người khác\" là: (A) Tính mục đích (B) Tính độc lập (C) Tính kiên trì (D) Tính tự chủ", a:"<span class='correct'>(B) Tính độc lập</span> — tự quyết định, không a dua theo người khác."},
+    {q:"Tự luận: Phân biệt xúc cảm và tình cảm, cho ví dụ trong môi trường công sở.", a:"Xúc cảm: nhất thời, gắn tình huống cụ thể (VD: vui mừng khi học viên đậu chứng chỉ hôm nay). Tình cảm: bền vững, khái quát, chỉ người có (VD: tình yêu nghề đào tạo, gắn bó nhiều năm với công ty)."},
+    {q:"Tự luận: Chọn 2 quy luật của đời sống tình cảm và minh hoạ bằng tình huống thực tế bạn từng gặp khi đào tạo/quản lý học viên.", a:"VD Lây lan: không khí hào hứng của giảng viên lan sang cả lớp học. VD Pha trộn: học viên vừa lo lắng vừa hào hứng trước một bài kiểm tra cuối khoá quan trọng."},
+    {q:"Tự luận: Nêu cấu trúc một hành động ý chí và áp dụng vào việc bạn đặt mục tiêu học tập cho môn này.", a:"5 bước: (1) xác định mục đích/động cơ, (2) lập kế hoạch, (3) quyết định hành động, (4) thực hiện – vượt khó khăn, (5) đánh giá kết quả. Áp dụng: đặt mục tiêu đạt điểm A môn Tâm lý học (1), lên lịch ôn tập theo tuần (2), cam kết học mỗi tối (3), kiên trì dù bận công việc (4), tự kiểm tra qua các câu hỏi ôn tập (5)."},
+  ],
+  ch4: [
+    {q:"Theo tháp Maslow, nhu cầu \"được đồng nghiệp công nhận năng lực chuyên môn\" thuộc bậc nào? (A) An toàn (B) Xã hội (C) Được tôn trọng (D) Tự hoàn thiện", a:"<span class='correct'>(C) Được tôn trọng</span> — nhu cầu được công nhận năng lực chuyên môn thuộc bậc 4 trong tháp Maslow."},
+    {q:"Khí chất nào có đặc điểm \"phản ứng nhanh, mạnh, dễ bốc đồng, dứt khoát\"? (A) Hăng hái (B) Nóng nảy (C) Bình thản (D) Ưu tư", a:"<span class='correct'>(B) Nóng nảy (Choleric)</span> — kiểu thần kinh mạnh, không cân bằng, phản ứng nhanh mạnh, dễ bốc đồng."},
+    {q:"Khẳng định nào ĐÚNG về khí chất và tính cách? (A) Khí chất có thể đánh giá tốt/xấu rõ ràng (B) Tính cách chủ yếu do bẩm sinh quyết định (C) Khí chất là \"phong cách\" biểu hiện, tính cách là \"nội dung\" thái độ (D) Hai khái niệm hoàn toàn đồng nhất", a:"<span class='correct'>(C)</span> — Khí chất là \"phong cách\" biểu hiện, tính cách là \"nội dung\" thái độ. Đây là khác biệt cốt lõi giữa hai khái niệm."},
+    {q:"Yếu tố nào KHÔNG thuộc xu hướng nhân cách? (A) Nhu cầu (B) Lý tưởng (C) Khí chất (D) Niềm tin", a:"<span class='correct'>(C) Khí chất</span> — không thuộc xu hướng nhân cách mà là một thuộc tính tâm lý riêng biệt (cùng cấp với tính cách, năng lực)."},
+    {q:"Tự luận: Phân biệt nhu cầu và động cơ, cho ví dụ trong việc bạn học môn Tâm lý học này.", a:"Nhu cầu: trạng thái thiếu hụt cần thoả mãn (VD: nhu cầu được công nhận năng lực chuyên môn). Động cơ: lực thúc đẩy hành động cụ thể (VD: vì vậy quyết tâm học tốt môn này để lấy chứng chỉ ngành Tâm lý học)."},
+    {q:"Tự luận: Chọn 2 trong 4 loại khí chất và đề xuất cách tiếp cận phù hợp khi đào tạo học viên có khí chất đó.", a:"Hăng hái: tận dụng hoạt động nhóm sôi nổi nhưng cần chốt lại nội dung để tránh mất tập trung. Ưu tư: tạo môi trường an toàn, phản hồi riêng tư thay vì chỉ trích trước đám đông, cho thời gian chuẩn bị trước khi phát biểu."},
+    {q:"Tự luận: Vì sao năng lực khác với tri thức/kỹ năng đơn lẻ? Lấy ví dụ trong nghề đào tạo của bạn.", a:"Năng lực là sự vận dụng TỔNG HỢP tri thức, kỹ năng, kỹ xảo vào giải quyết hiệu quả một hoạt động cụ thể, không phải chỉ sở hữu từng yếu tố riêng lẻ. VD: một người thuộc lòng lý thuyết sư phạm (tri thức) nhưng chưa chắc đứng lớp tốt nếu thiếu khả năng ứng biến, xử lý tình huống thực tế trên lớp (năng lực)."},
+  ],
+  ch5: [
+    {q:"Lĩnh vực nào tập trung nghiên cứu hành vi con người trong môi trường làm việc, tuyển dụng, động lực nhân viên? (A) Tâm lý học lâm sàng (B) Tâm lý học tổ chức – nhân sự (C) Tâm lý học phát triển (D) Tâm lý học xã hội", a:"<span class='correct'>(B) Tâm lý học tổ chức – nhân sự (I/O Psychology)</span>."},
+    {q:"Nhận định nào đúng nhất về mối quan hệ giữa các trường phái tâm lý học? (A) Chỉ có 1 trường phái đúng, các trường phái khác đều sai (B) Các trường phái loại trừ lẫn nhau (C) Các trường phái bổ sung cho nhau, mỗi trường phái nhấn mạnh một khía cạnh (D) Các trường phái không liên quan gì đến nhau", a:"<span class='correct'>(C)</span> — Các trường phái bổ sung cho nhau, mỗi trường phái nhấn mạnh một khía cạnh — không có trường phái nào \"đúng tuyệt đối, sai tuyệt đối\"."},
+    {q:"Tự luận: Chọn một hiện tượng tâm lý bạn quan sát được trong công việc đào tạo, phân tích nó dưới ít nhất 2 góc nhìn/trường phái khác nhau.", a:"Tham khảo ví dụ trong bài: một nhân viên trễ deadline có thể nhìn qua góc độ Hành vi (thiếu củng cố tích cực), Nhận thức (quản lý thời gian kém), Nhân văn (thiếu động lực nội tại), hoặc Xã hội (áp lực nhóm, văn hoá trễ hạn phổ biến)."},
+  ],
+  ch6: [
+    {q:"Bộ phận nào của nơ-ron có nhiệm vụ tiết chất dẫn truyền thần kinh vào khe xináp? (A) Sợi nhánh (B) Thân nơ-ron (C) Cúc tận cùng của sợi trục (D) Bao myelin", a:"<span class='correct'>(C) Cúc tận cùng của sợi trục</span> — nơi tiết neurotransmitter vào khe xináp để truyền tín hiệu sang nơ-ron kế tiếp."},
+    {q:"Chất dẫn truyền thần kinh nào có liên quan chặt chẽ nhất đến cảm giác tưởng thưởng và động lực? (A) Serotonin (B) Dopamine (C) GABA (D) Acetylcholine", a:"<span class='correct'>(B) Dopamine</span> — liên quan đến cảm giác tưởng thưởng, động lực và vận động."},
+    {q:"Vùng não nào chịu trách nhiệm chính cho việc hình thành trí nhớ dài hạn? (A) Hạch hạnh nhân (B) Hồi hải mã (C) Tiểu não (D) Thuỳ chẩm", a:"<span class='correct'>(B) Hồi hải mã (Hippocampus)</span> — thuộc hệ viền, đóng vai trò then chốt trong hình thành trí nhớ dài hạn."},
+    {q:"Hệ thần kinh nào chịu trách nhiệm cho phản ứng \"chiến hay chạy\" khi gặp nguy hiểm? (A) Hệ đối giao cảm (B) Hệ giao cảm (C) Hệ thần kinh soma (D) Tiểu não", a:"<span class='correct'>(B) Hệ giao cảm (sympathetic)</span> — kích hoạt phản ứng \"chiến hay chạy\"; hệ đối giao cảm giúp cơ thể trở lại trạng thái nghỉ ngơi."},
+    {q:"Tự luận: Giải thích vì sao tổn thương vùng Broca (thuỳ trán) và vùng Wernicke (thuỳ thái dương) lại gây ra 2 dạng rối loạn ngôn ngữ khác nhau.", a:"Vùng Broca điều khiển khả năng NÓI (tạo lời nói) — tổn thương gây khó khăn khi phát âm dù vẫn hiểu người khác nói. Vùng Wernicke điều khiển khả năng HIỂU ngôn ngữ — tổn thương khiến người bệnh nói trôi chảy nhưng vô nghĩa, không hiểu lời người khác. Đây là minh chứng cho việc các vùng não khác nhau đảm nhiệm các chức năng chuyên biệt khác nhau."},
+  ],
+  ch7: [
+    {q:"Trong thí nghiệm của Pavlov, tiếng chuông (trước khi được ghép cặp với thức ăn) được gọi là gì? (A) Kích thích có điều kiện (B) Kích thích trung tính (C) Kích thích không điều kiện (D) Phản ứng có điều kiện", a:"<span class='correct'>(B) Kích thích trung tính</span> — trước khi ghép cặp với thức ăn (UCS), tiếng chuông chưa gây ra phản ứng gì đặc biệt; sau khi ghép cặp lặp lại, nó mới trở thành kích thích có điều kiện (CS)."},
+    {q:"Việc tắt tiếng chuông báo lỗi khó chịu khi nhân viên hoàn thành đúng quy trình là ví dụ của: (A) Củng cố dương (B) Củng cố âm (C) Trừng phạt dương (D) Trừng phạt âm", a:"<span class='correct'>(B) Củng cố âm</span> — LẤY ĐI một yếu tố khó chịu (tiếng chuông) để TĂNG hành vi mong muốn (làm đúng quy trình)."},
+    {q:"Lịch trình củng cố nào tạo ra hành vi bền vững nhất, khó dập tắt nhất (như trong máy đánh bạc)? (A) Tỉ lệ cố định (B) Tỉ lệ biến đổi (C) Khoảng cố định (D) Khoảng biến đổi", a:"<span class='correct'>(B) Tỉ lệ biến đổi (Variable Ratio)</span> — vì phần thưởng không thể đoán trước, hành vi được duy trì đều đặn và rất khó dập tắt."},
+    {q:"Thí nghiệm búp bê Bobo của Bandura minh chứng cho hình thức học tập nào? (A) Điều kiện hoá cổ điển (B) Điều kiện hoá thao tác (C) Học tập qua quan sát (D) Học tập bẩm sinh", a:"<span class='correct'>(C) Học tập qua quan sát (Observational learning)</span> — trẻ học hành vi hung hăng bằng cách quan sát và bắt chước mô hình, không qua trải nghiệm hệ quả trực tiếp."},
+    {q:"Tự luận: Phân biệt điều kiện hoá cổ điển và điều kiện hoá thao tác bằng một ví dụ trong công việc đào tạo của bạn.", a:"Cổ điển: học viên dần cảm thấy lo lắng (phản ứng thụ động) khi nghe từ \"kiểm tra\" vì trước đây từng gắn với trải nghiệm bị la mắng. Thao tác: học viên chủ động phát biểu nhiều hơn (hành vi có chủ đích) vì mỗi lần phát biểu đều được khen (củng cố dương)."},
+    {q:"Tự luận: Đề xuất một cách ứng dụng lịch trình củng cố \"tỉ lệ biến đổi\" vào việc thiết kế game hoá (gamification) cho một khoá đào tạo trực tuyến.", a:"VD: sau mỗi bài học hoàn thành, học viên có cơ hội ngẫu nhiên (không cố định) nhận được huy hiệu đặc biệt hoặc phần quà bất ngờ — sự không thể đoán trước này khiến học viên duy trì động lực hoàn thành bài học đều đặn hơn so với việc luôn biết trước phần thưởng cố định."},
+  ],
+  ch8: [
+    {q:"Thuyết đa trí tuệ (Multiple Intelligences) là của tác giả nào? (A) Charles Spearman (B) Howard Gardner (C) Robert Sternberg (D) Jean Piaget", a:"<span class='correct'>(B) Howard Gardner</span> — đề xuất nhiều loại trí tuệ độc lập (ngôn ngữ, logic-toán, không gian, âm nhạc, vận động, giao tiếp, nội tâm, tự nhiên...)."},
+    {q:"Phần lớn các giấc mơ sống động xảy ra ở giai đoạn ngủ nào? (A) NREM 1 (B) NREM 2 (C) NREM 3 (D) REM", a:"<span class='correct'>(D) REM (Rapid Eye Movement)</span> — não hoạt động gần như lúc thức, đây là giai đoạn xảy ra phần lớn các giấc mơ sống động."},
+    {q:"Theo Piaget, trẻ ở giai đoạn nào bắt đầu hiểu được \"tính bảo toàn\" (lượng nước không đổi dù đổ sang bình khác hình dạng)? (A) Giác động (B) Tiền thao tác (C) Thao tác cụ thể (D) Thao tác hình thức", a:"<span class='correct'>(C) Thao tác cụ thể</span> (7–11 tuổi) — trẻ bắt đầu tư duy logic với sự vật cụ thể và hiểu được tính bảo toàn."},
+    {q:"Theo Erikson, giai đoạn \"Thân mật vs. Cô lập\" thường ứng với độ tuổi nào? (A) Thanh thiếu niên (B) Trưởng thành trẻ (C) Trung niên (D) Cao niên", a:"<span class='correct'>(B) Trưởng thành trẻ (18–40 tuổi)</span> — giai đoạn con người tìm kiếm và xây dựng các mối quan hệ thân mật sâu sắc."},
+    {q:"Tự luận: So sánh ngắn gọn quan điểm của Chomsky và Skinner về sự phát triển ngôn ngữ ở trẻ.", a:"Chomsky: ngôn ngữ chủ yếu là năng lực bẩm sinh, có sẵn \"cơ chế thụ đắc ngôn ngữ\" (LAD) giúp trẻ tiếp thu ngữ pháp rất nhanh dù không được dạy trực tiếp. Skinner: ngôn ngữ được HỌC qua củng cố và bắt chước như mọi hành vi khác, không cần giả định một cơ chế bẩm sinh riêng biệt."},
+    {q:"Tự luận: Học viên trưởng thành trong lớp bạn (theo Erikson) thường đang ở giai đoạn phát triển tâm lý xã hội nào? Điều này gợi ý gì cho cách bạn thiết kế thông điệp động viên học viên?", a:"Phần lớn học viên đi làm trong độ tuổi 25–45 đang ở giai đoạn \"Thân mật vs. Cô lập\" hoặc bắt đầu \"Cống hiến vs. Trì trệ\" — họ học không chỉ vì kiến thức mà vì mong muốn khẳng định giá trị bản thân, đóng góp cho sự nghiệp/gia đình. Thông điệp động viên nên nhấn vào ý nghĩa cống hiến, sự công nhận, thay vì chỉ nhấn vào điểm số hay hình phạt."},
+  ],
+};
+
+// ---------------- Flatten quiz bank with stable IDs ----------------
+const ALL_QUESTIONS = [];
+Object.keys(QUIZ).forEach(chapKey => {
+  QUIZ[chapKey].forEach((item, idx) => {
+    ALL_QUESTIONS.push({ id: chapKey + '-' + idx, chapKey, q: item.q, a: item.a });
+  });
+});
+const CHAPTER_LABEL = {
+  ch1:'Chg 1', ch2:'Chg 2', ch3:'Chg 3', ch4:'Chg 4', ch5:'Chg 5', ch6:'Chg 6', ch7:'Chg 7', ch8:'Chg 8'
+};
+
+// ---------------- Persistence (localStorage — works when the file is opened directly in a browser) ----------------
+let progress = {}; // { [id]: 'mastered' | 'review' }
+
+async function loadProgress(){
+  try{
+    const raw = localStorage.getItem('psych-quiz-progress');
+    if(raw) progress = JSON.parse(raw);
+  }catch(e){ /* localStorage unavailable — continue with in-memory progress only */ }
+  refreshAllStats();
+}
+function saveProgress(){
+  try{
+    localStorage.setItem('psych-quiz-progress', JSON.stringify(progress));
+  }catch(e){ /* best-effort only */ }
+}
+
+// ---------------- Card rendering (shared by per-chapter grids and mixed review) ----------------
+function renderQuestionCard(item, opts){
+  opts = opts || {};
+  const card = document.createElement('div');
+  card.className = 'qcard';
+  const status = progress[item.id];
+  if(status) card.classList.add(status);
+  if(opts.showChapterTag){
+    const chapSection = document.getElementById(item.chapKey);
+    if(chapSection){
+      const cs = getComputedStyle(chapSection);
+      const col = cs.getPropertyValue('--chapter-color').trim();
+      const colSoft = cs.getPropertyValue('--chapter-color-soft').trim();
+      if(col) card.style.setProperty('--chapter-color', col);
+      if(colSoft) card.style.setProperty('--chapter-color-soft', colSoft);
+    }
+  }
+  card.innerHTML = `
+    <span class="status-dot" title="Trạng thái ôn tập"></span>
+    <div class="qc-head">
+      ${opts.showChapterTag ? `<span class="chtag">${CHAPTER_LABEL[item.chapKey]}</span>` : `<span class="qtag">Câu ${opts.index != null ? opts.index+1 : ''}</span>`}
+      <span class="qtext">${item.q}</span>
+    </div>
+    <div class="qc-flip-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M4 10a8 8 0 0114-4M20 14a8 8 0 01-14 4"/></svg>
+      Bấm để xem đáp án
+    </div>
+    <div class="qc-answer"><b>Đáp án:</b> ${item.a}</div>
+    <div class="qc-mastery" style="display:none;">
+      <button type="button" class="mbtn mastered-btn ${status==='mastered'?'active':''}">✓ Đã thuộc</button>
+      <button type="button" class="mbtn review-btn ${status==='review'?'active':''}">↻ Cần ôn lại</button>
+    </div>
+  `;
+  const masteryRow = card.querySelector('.qc-mastery');
+  card.addEventListener('click', (e) => {
+    if(e.target.closest('.mbtn')) return;
+    card.classList.toggle('open');
+    masteryRow.style.display = card.classList.contains('open') ? 'flex' : 'none';
+  });
+  card.querySelector('.mastered-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    setStatus(item.id, progress[item.id] === 'mastered' ? null : 'mastered');
+  });
+  card.querySelector('.review-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    setStatus(item.id, progress[item.id] === 'review' ? null : 'review');
+  });
+  return card;
+}
+
+function setStatus(id, status){
+  if(status) progress[id] = status; else delete progress[id];
+  saveProgress();
+  refreshAllStats();
+  rerenderCardStates();
+}
+
+function rerenderCardStates(){
+  document.querySelectorAll('[data-qid]').forEach(card => {
+    const id = card.dataset.qid;
+    card.classList.remove('mastered','review');
+    const s = progress[id];
+    if(s) card.classList.add(s);
+    const mBtn = card.querySelector('.mastered-btn');
+    const rBtn = card.querySelector('.review-btn');
+    if(mBtn) mBtn.classList.toggle('active', s === 'mastered');
+    if(rBtn) rBtn.classList.toggle('active', s === 'review');
+  });
+}
+
+// tag qid onto cards right after creation (helper wraps renderQuestionCard)
+function makeCard(item, opts){
+  const el = renderQuestionCard(item, opts);
+  el.dataset.qid = item.id;
+  return el;
+}
+
+function buildQuiz(){
+  Object.keys(QUIZ).forEach(chapKey => {
+    const container = document.getElementById('quiz-' + chapKey);
+    if(!container) return;
+    QUIZ[chapKey].forEach((item, idx) => {
+      const card = makeCard({ id: chapKey+'-'+idx, chapKey, q: item.q, a: item.a }, { index: idx });
+      container.appendChild(card);
+    });
+  });
+}
+buildQuiz();
+
+// ---------------- Mixed review (interleaving) ----------------
+let reviewOnlyFilter = false;
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function renderMixedReview(){
+  const grid = document.getElementById('mixgrid');
+  grid.innerHTML = '';
+  let pool = ALL_QUESTIONS;
+  if(reviewOnlyFilter){
+    pool = pool.filter(item => progress[item.id] === 'review' || !progress[item.id]);
+  }
+  const shuffled = shuffle(pool);
+  if(shuffled.length === 0){
+    grid.innerHTML = '<div class="empty-note">🎉 Không còn câu nào cần ôn lại trong bộ lọc hiện tại — bỏ chọn bộ lọc để ôn toàn bộ, hoặc quay lại sau.</div>';
+    return;
+  }
+  shuffled.forEach(item => {
+    const card = makeCard(item, { showChapterTag: true });
+    grid.appendChild(card);
+  });
+  document.getElementById('mixCount').textContent = shuffled.length + ' câu';
+}
+
+// ---------------- Stats: overall + per-chapter ----------------
+function refreshAllStats(){
+  let mastered = 0, review = 0;
+  const perChapter = {};
+  Object.keys(QUIZ).forEach(k => perChapter[k] = { total: QUIZ[k].length, mastered: 0 });
+  ALL_QUESTIONS.forEach(item => {
+    const s = progress[item.id];
+    if(s === 'mastered'){ mastered++; perChapter[item.chapKey].mastered++; }
+    if(s === 'review') review++;
+  });
+  const total = ALL_QUESTIONS.length;
+  document.getElementById('statMastered').textContent = mastered + ' / ' + total;
+  document.getElementById('statReview').textContent = review;
+  document.getElementById('masteryLabel').textContent = mastered + '/' + total + ' câu đã thuộc';
+
+  let weakestKey = null, weakestPct = 101;
+  Object.keys(perChapter).forEach(k => {
+    const pct = Math.round((perChapter[k].mastered / perChapter[k].total) * 100);
+    const fillEl = document.querySelector(`[data-fill="${k}"]`);
+    const pctEl = document.querySelector(`[data-pct="${k}"]`);
+    if(fillEl) fillEl.style.width = pct + '%';
+    if(pctEl){
+      pctEl.textContent = pct === 100 ? '✓ Xong' : pct + '%';
+      pctEl.style.color = pct === 100 ? 'var(--good)' : '';
+      pctEl.style.fontWeight = pct === 100 ? '700' : '';
+    }
+    if(pct < weakestPct){ weakestPct = pct; weakestKey = k; }
+  });
+  const weakestLabelMap = {ch1:'Chương 1',ch2:'Chương 2',ch3:'Chương 3',ch4:'Chương 4',ch5:'Chương 5',ch6:'Chương 6',ch7:'Chương 7',ch8:'Chương 8'};
+  document.getElementById('statWeakest').textContent = (weakestKey && weakestPct < 100) ? weakestLabelMap[weakestKey] : 'Xuất sắc!';
+
+  if(document.getElementById('mixgrid') && document.getElementById('mixgrid').children.length && !document.getElementById('mixgrid').querySelector('.empty-note')){
+    // keep existing mixed review cards in sync without reshuffling
+    rerenderCardStates();
+  }
+}
+
+document.getElementById('shuffleBtn').addEventListener('click', renderMixedReview);
+document.getElementById('reviewOnlyToggle').addEventListener('change', (e) => {
+  reviewOnlyFilter = e.target.checked;
+  renderMixedReview();
+});
+
+// ---------------- Sidebar active state + scroll progress ----------------
+const sections = Array.from(document.querySelectorAll('.chapter'));
+const tabs = Array.from(document.querySelectorAll('.taburl'));
+tabs.forEach(t => {
+  t.addEventListener('click', () => {
+    const el = document.getElementById(t.dataset.target);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.target === entry.target.id));
+    }
+  });
+}, {rootMargin: '-20% 0px -70% 0px'});
+sections.forEach(s => observer.observe(s));
+
+function updateProgress(){
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? Math.min(100, Math.round((scrollTop/docHeight)*100)) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = pct + '% đã xem qua';
+}
+window.addEventListener('scroll', updateProgress);
+updateProgress();
+
+// ---------------- Mobile nav toggle ----------------
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// ---------------- Dark mode ----------------
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  try{ localStorage.setItem('psych-theme', theme); }catch(e){}
+}
+function initTheme(){
+  let theme = 'light';
+  try{
+    const saved = localStorage.getItem('psych-theme');
+    if(saved){ theme = saved; }
+    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ theme = 'dark'; }
+  }catch(e){}
+  applyTheme(theme);
+}
+function toggleTheme(){
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+initTheme();
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+
+// ---------------- Print ----------------
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+// ---------------- Brain map interactivity ----------------
+const BRAIN_INFO = {
+  frontal: { title:'Thuỳ trán (Frontal lobe)', text:'Tư duy, lập kế hoạch, ra quyết định, kiểm soát vận động, nhân cách. Chứa vùng Broca — điều khiển khả năng nói.' },
+  parietal: { title:'Thuỳ đỉnh (Parietal lobe)', text:'Xử lý cảm giác thân thể (đụng chạm, đau, nhiệt độ) và định vị không gian.' },
+  temporal: { title:'Thuỳ thái dương (Temporal lobe)', text:'Xử lý thính giác, trí nhớ. Chứa vùng Wernicke — hiểu ngôn ngữ.' },
+  occipital: { title:'Thuỳ chẩm (Occipital lobe)', text:'Xử lý thị giác — nằm ở phía sau đầu, xa mắt nhất nhưng lại đảm nhiệm chức năng nhìn.' },
+};
+function initBrainMap(){
+  const regions = document.querySelectorAll('.brain-region');
+  const legendItems = document.querySelectorAll('.brain-legend span');
+  const infoBox = document.getElementById('brainInfo');
+  function show(key){
+    const d = BRAIN_INFO[key];
+    if(!d || !infoBox) return;
+    infoBox.querySelector('h4').textContent = d.title;
+    infoBox.querySelector('p').textContent = d.text;
+    regions.forEach(r => r.style.opacity = r.dataset.region === key ? '1' : '.45');
+    legendItems.forEach(l => l.style.borderColor = l.dataset.region === key ? l.style.background : 'transparent');
+  }
+  regions.forEach(r => r.addEventListener('click', () => show(r.dataset.region)));
+  legendItems.forEach(l => l.addEventListener('click', () => show(l.dataset.region)));
+  if(regions.length) show(regions[0].dataset.region);
+}
+initBrainMap();
+
+loadProgress();
+renderMixedReview();
+</script>
+
+</body>
+</html>
